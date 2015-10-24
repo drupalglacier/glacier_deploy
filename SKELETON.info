@@ -1,0 +1,14 @@
+name = ***HUMAN_NAME***
+description = Install site for ***HUMAN_NAME***
+core = 7.x
+
+dependencies[] = block
+dependencies[] = dblog
+
+dependencies[] = kw_manifests
+dependencies[] = features
+
+env_dependencies[development][] = field_ui
+env_dependencies[development][] = strongarm
+
+files[] = ***MACHINE_NAME***.profile
