@@ -8,5 +8,7 @@ then
 fi
 
 drush -y make $LOCAL_MAKE_FILE $LOCAL_DOCROOT/tmp
-mv $LOCAL_DOCROOT/tmp/{.,}* $LOCAL_DOCROOT
-rm -Rf tmp
+# mv $LOCAL_DOCROOT/tmp/{.,}* $LOCAL_DOCROOT
+rsync -av $LOCAL_DOCROOT/tmp/ $LOCAL_DOCROOT
+# (after checking)
+rm -Rf $LOCAL_DOCROOT/tmp
