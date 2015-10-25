@@ -1,4 +1,5 @@
 #!/bin/bash
+ENVIRONMENT="dev"
 PROJECT_MACHINE_NAME="deploytest"
 PROJECT_HUMAN_READABLE_NAME="Deploytest"
 KEEP_OLD_BACKUPS=false

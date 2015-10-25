@@ -1,6 +1,35 @@
 #!/bin/bash
-source config.cfg
+ENVIRONMENT_DIRECTORY="../environment"
 
+# Override the environemnt directory setting.
+# e.g. ./setup.sh --environment-directory=/env/directory
+for i in "$@"
+do
+case $i in
+    -ed=*|--environment-directory=*)
+    ENVIRONMENT_DIRECTORY="${i#*=}"
+    shift
+    ;;
+    *)
+    # unknown option
+    ;;
+esac
+done
+
+
+
+# Setup the basic environment.
+if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
+then
+  mkdir -p $ENVIRONMENT_DIRECTORY
+  cp config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
+fi
+
+source $ENVIRONMENT_DIRECTORY/config.cfg
+
+
+
+# Build the make file.
 if [ ! -f $LOCAL_MAKE_FILE ]
 then
   mkdir -p $LOCAL_DIRECTORY
@@ -8,7 +37,5 @@ then
 fi
 
 drush -y make $LOCAL_MAKE_FILE $LOCAL_DOCROOT/tmp
-# mv $LOCAL_DOCROOT/tmp/{.,}* $LOCAL_DOCROOT
 rsync -av $LOCAL_DOCROOT/tmp/ $LOCAL_DOCROOT
-# (after checking)
 rm -Rf $LOCAL_DOCROOT/tmp
