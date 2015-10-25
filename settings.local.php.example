@@ -1,0 +1,17 @@
+<?php
+
+$databases = array(
+  'default' => array(
+    'default' => array(
+      'database' => 'DATABASE_PLACEHOLDER',
+      'username' => 'DATABASE_USERNAME_PLACEHOLDER',
+      'password' => 'DATABASE_PASSWORD_PLACEHOLDER',
+      'host'     => 'DATABASE_HOST_PLACEHOLDER',
+      'port'     => 'DATABASE_PORT_PLACEHOLDER',
+      'driver'   => 'DATABASE_DRIVER_PLACEHOLDER',
+      'prefix'   => 'DATABASE_PREFIX_PLACEHOLDER',
+    ),
+  ),
+);
+
+$drupal_hash_salt = 'RANDOM_STRING_PLACEHOLDER';
