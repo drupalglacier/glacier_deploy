@@ -1,0 +1,187 @@
+api = 2
+
+; Core
+core = 7.x
+projects[] = drupal
+
+; Performance patches (according to https://groups.drupal.org/node/210683).
+projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-1443308-49-module_load_include-static-cache.patch
+projects[drupal][patch][] = https://www.drupal.org/files/issues/D7_improve_theme_registry-2339447-65.patch
+projects[drupal][patch][] = https://www.drupal.org/files/drupal-1443342-1-inline-file_uri_scheme-in-file_stream_wrapper_uri_normalize.patch
+projects[drupal][patch][] = https://www.drupal.org/files/drupal-1081266-102-drupal_get_filename-D7.patch
+
+
+
+; Modules (contrib)
+; Administration
+projects[admin_menu][subdir] = contrib
+projects[admin_menu][version] = 3.x-dev
+projects[adminimal_admin_menu][subdir] = contrib
+projects[locale_auto_import][subdir] = contrib
+projects[module_filter][subdir] = contrib
+
+; Advanced CSS/JS Aggregation
+projects[advagg][subdir] = contrib
+
+; Bean
+projects[bean][subdir] = contrib
+
+; Chaos tool suite
+projects[ctools][subdir] = contrib
+
+; Clientside Validation
+projects[clientside_validation][subdir] = contrib
+projects[clientside_validation][version] = 1.x-dev
+
+; Date/Time
+projects[date][subdir] = contrib
+
+; Development
+projects[devel][subdir] = contrib
+projects[search_krumo][subdir] = contrib
+
+; Display Suite
+projects[ds][subdir] = contrib
+
+; Features
+projects[features][subdir] = contrib
+projects[uuid_features][subdir] = contrib
+
+; Fields
+projects[email][subdir] = contrib
+projects[entityreference][subdir] = contrib
+projects[fences][subdir] = contrib
+projects[field_group][subdir] = contrib
+projects[link][subdir] = contrib
+projects[smart_trim][subdir] = contrib
+projects[title][subdir] = contrib
+
+; Frontend
+projects[magic][subdir] = contrib
+
+; glacier
+projects[glacier_system][subdir] = contrib
+
+; Media
+projects[file_entity][subdir] = contrib
+projects[media][subdir] = contrib
+projects[media][version] = 2.x-dev
+projects[media_browser_plus][subdir] = contrib
+projects[media_browser_plus][version] = 3.x-dev
+
+; Multilingual
+projects[l10n_update][subdir] = contrib
+
+; Multilingual - Entity Translation
+projects[entity_translation][subdir] = contrib
+
+; Multilingual - Internationalization
+projects[i18n][subdir] = contrib
+projects[i18nviews][subdir] = contrib
+projects[i18nviews][version] = 3.x-dev
+
+; Other
+projects[addanother][subdir] = contrib
+projects[better_formats][subdir] = contrib
+projects[block_class][subdir] = contrib
+projects[blockify][subdir] = contrib
+projects[bower_manager][subdir] = contrib
+projects[colorbox][subdir] = contrib
+projects[entity][subdir] = contrib
+projects[field_formatter_settings][subdir] = contrib
+projects[focal_point][subdir] = contrib
+projects[formatter_field][subdir] = contrib
+projects[formatter_field][version] = 1.x-dev
+projects[formatter_field_preset][subdir] = contrib
+projects[libraries][subdir] = contrib
+projects[multiform][subdir] = contrib
+projects[pathauto][subdir] = contrib
+projects[rabbit_hole][subdir] = contrib
+projects[strongarm][subdir] = contrib
+projects[token][subdir] = contrib
+projects[transliteration][subdir] = contrib
+
+; Paragraphs
+projects[paragraphs][subdir] = contrib
+
+; Path management
+projects[globalredirect][subdir] = contrib
+
+; Performance and scalability
+projects[apdqc][subdir] = contrib
+projects[apdqc][version] = 1.x-dev
+projects[minify][subdir] = contrib
+
+; SEO
+projects[metatag][subdir] = contrib
+
+; UUID
+projects[uuid][subdir] = contrib
+
+; User interface
+projects[ife][subdir] = contrib
+projects[ife][version] = 2.x-dev
+projects[jquery_update][subdir] = contrib
+projects[select2][subdir] = contrib
+projects[select2][patch][] = https://www.drupal.org/files/issues/select2-libraries-does-not-detect-4.x-2445585-1.patch
+
+; Variable
+projects[variable][subdir] = contrib
+
+; Views
+projects[better_exposed_filters][subdir] = contrib
+projects[draggableviews][subdir] = contrib
+projects[views][subdir] = contrib
+projects[views_bulk_operations][subdir] = contrib
+projects[views_tree][subdir] = contrib
+
+; XML sitemap
+projects[xmlsitemap][subdir] = contrib
+
+
+
+; Modules (custom)
+projects[bower_manager][download][type] = get
+projects[bower_manager][download][url] = https://github.com/maoberlehnerdrupal/bower_manager/archive/7.x-1.x-dev.zip
+projects[bower_manager][type] = module
+projects[bower_manager][subdir] = custom
+
+projects[fences_display_specific_wrapper][download][type] = get
+projects[fences_display_specific_wrapper][download][url] = https://github.com/maoberlehnerdrupal/fences_display_specific_wrapper/archive/7.x-1.x-dev.zip
+projects[fences_display_specific_wrapper][type] = module
+projects[fences_display_specific_wrapper][subdir] = custom
+
+projects[glacier_system][download][type] = get
+projects[glacier_system][download][url] = https://github.com/drupalglacier/glacier_system/archive/7.x-1.x-dev.zip
+projects[glacier_system][type] = module
+projects[glacier_system][subdir] = custom
+
+projects[image_progressive_effect][download][type] = get
+projects[image_progressive_effect][download][url] = https://github.com/maoberlehnerdrupal/image_progressive_effect/archive/7.x-1.x-dev.zip
+projects[image_progressive_effect][type] = module
+projects[image_progressive_effect][subdir] = custom
+
+
+
+; Themes (contrib)
+projects[] = adminimal_theme
+
+
+
+; Themes (custom)
+projects[glacier][download][type] = get
+projects[glacier][download][url] = https://github.com/drupalglacier/glacier/archive/7.x-2.x-dev.zip
+projects[glacier][type] = theme
+
+
+
+; Libraries
+libraries[select2][download][type] = get
+libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.0.tar.gz
+libraries[select2][directory_name] = select2
+libraries[select2][type] = library
+
+
+
+; Translations
+; translations[] = de
