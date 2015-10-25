@@ -32,7 +32,7 @@ source $ENVIRONMENT_DIRECTORY/config.cfg
 # Build the make file.
 if [ ! -f $LOCAL_MAKE_FILE ]
 then
-  mkdir -p $LOCAL_DIRECTORY
+  mkdir -p $LOCAL_DIRECTORY/all
   cp glacier.make.example $LOCAL_MAKE_FILE
 fi
 
