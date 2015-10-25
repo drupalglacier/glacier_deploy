@@ -136,7 +136,6 @@ fi
 
 
 
-# TODO: Install Drupal
 # TODO: Install Modules
 # TODO: create sub theme, admin sub theme and deployment helper module
 # TODO: settings
