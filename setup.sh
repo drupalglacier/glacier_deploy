@@ -2,7 +2,7 @@
 ENVIRONMENT_DIRECTORY="../environment"
 
 # Override the environemnt directory setting.
-# e.g. ./setup.sh --environment-directory=/env/directory
+# e.g. ./setup.sh --environment-directory=/env/directory/enviroment
 for i in "$@"
 do
 case $i in
