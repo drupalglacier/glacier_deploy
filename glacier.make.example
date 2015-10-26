@@ -123,7 +123,6 @@ projects[ife][subdir] = contrib
 projects[ife][version] = 2.x-dev
 projects[jquery_update][subdir] = contrib
 projects[select2][subdir] = contrib
-projects[select2][patch][] = https://www.drupal.org/files/issues/select2-libraries-does-not-detect-4.x-2445585-1.patch
 
 ; Variable
 projects[variable][subdir] = contrib
@@ -177,7 +176,7 @@ projects[glacier][type] = theme
 
 ; Libraries
 libraries[select2][download][type] = get
-libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.0.tar.gz
+libraries[select2][download][url] = https://github.com/select2/select2/archive/3.5.4.tar.gz
 libraries[select2][directory_name] = select2
 libraries[select2][type] = library
 
