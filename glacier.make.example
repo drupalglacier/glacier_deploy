@@ -16,7 +16,6 @@ projects[drupal][patch][] = https://www.drupal.org/files/drupal-1081266-102-drup
 ; Administration
 projects[admin_menu][subdir] = contrib
 projects[admin_menu][version] = 3.x-dev
-projects[adminimal_admin_menu][subdir] = contrib
 projects[locale_auto_import][subdir] = contrib
 projects[module_filter][subdir] = contrib
 
@@ -163,7 +162,7 @@ projects[image_progressive_effect][subdir] = custom
 
 
 ; Themes (contrib)
-projects[] = adminimal_theme
+projects[] = shiny
 
 
 
