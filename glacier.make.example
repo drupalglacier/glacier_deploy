@@ -138,38 +138,42 @@ projects[xmlsitemap][subdir] = contrib
 
 
 
-; Modules (custom)
+; Modules (external)
 projects[bower_manager][download][type] = get
 projects[bower_manager][download][url] = https://github.com/maoberlehnerdrupal/bower_manager/archive/7.x-1.x-dev.zip
 projects[bower_manager][type] = module
-projects[bower_manager][subdir] = custom
+projects[bower_manager][subdir] = external
 
 projects[fences_display_specific_wrapper][download][type] = get
 projects[fences_display_specific_wrapper][download][url] = https://github.com/maoberlehnerdrupal/fences_display_specific_wrapper/archive/7.x-1.x-dev.zip
 projects[fences_display_specific_wrapper][type] = module
-projects[fences_display_specific_wrapper][subdir] = custom
-
-projects[glacier_system][download][type] = get
-projects[glacier_system][download][url] = https://github.com/drupalglacier/glacier_system/archive/7.x-1.x-dev.zip
-projects[glacier_system][type] = module
-projects[glacier_system][subdir] = custom
+projects[fences_display_specific_wrapper][subdir] = external
 
 projects[image_progressive_effect][download][type] = get
 projects[image_progressive_effect][download][url] = https://github.com/maoberlehnerdrupal/image_progressive_effect/archive/7.x-1.x-dev.zip
 projects[image_progressive_effect][type] = module
-projects[image_progressive_effect][subdir] = custom
+projects[image_progressive_effect][subdir] = external
+
+
+
+; Features
+projects[glacier_system][download][type] = get
+projects[glacier_system][download][url] = https://github.com/drupalglacier/glacier_system/archive/7.x-1.x-dev.zip
+projects[glacier_system][type] = module
+projects[glacier_system][subdir] = features
 
 
 
 ; Themes (contrib)
-projects[] = shiny
+projects[shiny][subdir] = contrib
 
 
 
-; Themes (custom)
+; Themes (external)
 projects[glacier][download][type] = get
 projects[glacier][download][url] = https://github.com/drupalglacier/glacier/archive/7.x-2.x-dev.zip
 projects[glacier][type] = theme
+projects[glacier][subdir] = external
 
 
 
