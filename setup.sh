@@ -136,6 +136,18 @@ fi
 
 
 
+# Theme configuration.
+( cd $LOCAL_DOCROOT && drush -y en glacier )
+( cd $LOCAL_DOCROOT && drush cc all )
+( cd $LOCAL_DOCROOT && drush -y glacier $PROJECT_MACHINE_NAME )
+mkdir -p $LOCAL_DIRECTORY/all/themes/custom
+mv $LOCAL_DIRECTORY/all/themes/external/$PROJECT_MACHINE_NAME $LOCAL_DIRECTORY/all/themes/custom
+( cd $LOCAL_DOCROOT && drush -y en $PROJECT_MACHINE_NAME )
+( cd $LOCAL_DOCROOT && drush -y vset theme_default $PROJECT_MACHINE_NAME )
+( cd $LOCAL_DOCROOT && drush -y dis bartik )
+
+
+
 # TODO: Install Modules
 # TODO: create sub theme, admin sub theme and deployment helper module
 # TODO: settings
