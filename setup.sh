@@ -148,6 +148,8 @@ mv $LOCAL_DIRECTORY/all/themes/external/$PROJECT_MACHINE_NAME $LOCAL_DIRECTORY/a
 
 
 
-# TODO: Install Modules
-# TODO: create sub theme, admin sub theme and deployment helper module
-# TODO: settings
+# TODO: create admin sub theme (PROJECT_NAME_admin)
+# TODO: create deployment helper module (PROJECT_NAME_deploy?) inside sites/all/modules/custom
+# TODO: install modules (via deployment dependencies or update / install hook)
+# TODO: settings (via deployment module update / install)
+# TODO: create a snapshot of the fresh install (do not delete this)
