@@ -1,0 +1,3 @@
+name = DEPLOY_MODULE
+description = Deployment helper module.
+core = 7.x
