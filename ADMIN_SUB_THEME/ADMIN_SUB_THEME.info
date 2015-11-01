@@ -1,7 +1,7 @@
-name        = ADMIN_SUB_THEME
+name = ADMIN_SUB_THEME
 description = Sub theme of your default admin theme.
-core        = 7.x
-base theme  = ADMIN_BASE_THEME
+core = 7.x
+base theme = ADMIN_BASE_THEME
 
 stylesheets[all][] = css/ADMIN_SUB_THEME.css
 scripts[] = js/ADMIN_SUB_THEME.js
