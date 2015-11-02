@@ -10,6 +10,9 @@ projects[drupal][patch][] = https://www.drupal.org/files/issues/D7_improve_theme
 projects[drupal][patch][] = https://www.drupal.org/files/drupal-1443342-1-inline-file_uri_scheme-in-file_stream_wrapper_uri_normalize.patch
 projects[drupal][patch][] = https://www.drupal.org/files/drupal-1081266-102-drupal_get_filename-D7.patch
 
+; Ignore npm vendor folder to improve directory search performance (https://www.drupal.org/node/2329453).
+projects[drupal][patch][] = https://www.drupal.org/files/issues/2329453-8-ignore_node_modules_directory.patch
+
 
 
 ; Modules (contrib)
