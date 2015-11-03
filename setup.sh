@@ -12,9 +12,10 @@ DATABASE_HOST="127.0.0.1"
 DATABASE_PORT=""
 DATABASE_DRIVER="mysql"
 DATABASE_PREFIX=""
+ADMIN_BASE_THEME="shiny"
 
 # Get settings from the script call.
-# e.g. ./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1
+# e.g. ./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1 --admin-base-theme=shiny
 for i in "$@"
 do
 case $i in
@@ -64,6 +65,10 @@ case $i in
     ;;
     -dbpre=*|--database-prefix=*)
     DATABASE_PREFIX="${i#*=}"
+    shift
+    ;;
+    -adbt=*|--admin-base-theme=*)
+    ADMIN_BASE_THEME="${i#*=}"
     shift
     ;;
     *)
@@ -145,10 +150,23 @@ mv $LOCAL_WORKSPACE/all/themes/external/$PROJECT_MACHINE_NAME $LOCAL_WORKSPACE/a
 ( cd $LOCAL_DOCROOT && drush -y en $PROJECT_MACHINE_NAME )
 ( cd $LOCAL_DOCROOT && drush -y vset theme_default $PROJECT_MACHINE_NAME )
 ( cd $LOCAL_DOCROOT && drush -y dis bartik )
+# Create the admin sub theme.
+ADMIN_SUB_THEME="${PROJECT_MACHINE_NAME}_admin"
+ADMIN_SUB_THEME_PATH="$LOCAL_WORKSPACE/all/themes/custom/$ADMIN_SUB_THEME"
+cp -R ADMIN_SUB_THEME $LOCAL_WORKSPACE/all/themes/custom
+mv $LOCAL_WORKSPACE/all/themes/custom/ADMIN_SUB_THEME $ADMIN_SUB_THEME_PATH
+sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" $ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css
+sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" $ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js
+sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" $ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info
+sed -i -e "s#ADMIN_BASE_THEME#$ADMIN_BASE_THEME#g" $ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info
+sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" $ADMIN_SUB_THEME_PATH/template.php
+mv $ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css $ADMIN_SUB_THEME_PATH/css/$ADMIN_SUB_THEME.css
+mv $ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js $ADMIN_SUB_THEME_PATH/js/$ADMIN_SUB_THEME.js
+mv $ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info $ADMIN_SUB_THEME_PATH/$ADMIN_SUB_THEME.info
+( cd $LOCAL_DOCROOT && drush -y vset admin_theme $ADMIN_SUB_THEME )
 
 
 
-# TODO: create admin sub theme (PROJECT_NAME_admin)
 # TODO: create deployment helper module (PROJECT_NAME_deploy?) inside sites/all/modules/custom
 # TODO: install modules (via deployment dependencies or update / install hook)
 # TODO: settings (via deployment module update / install)
