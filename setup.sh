@@ -167,7 +167,20 @@ mv $ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info $ADMIN_SUB_THEME_PATH/$ADMIN_SUB_T
 
 
 
-# TODO: create deployment helper module (PROJECT_NAME_deploy?) inside sites/all/modules/custom
+# Create and enable deployment helper module.
+DEPLOY_MODULE="${PROJECT_MACHINE_NAME}_deploy"
+DEPLOY_MODULE_PATH="$LOCAL_WORKSPACE/all/modules/custom/$DEPLOY_MODULE"
+mkdir -p $LOCAL_WORKSPACE/all/modules/custom
+cp -R DEPLOY_MODULE $LOCAL_WORKSPACE/all/modules/custom
+mv $LOCAL_WORKSPACE/all/modules/custom/DEPLOY_MODULE $DEPLOY_MODULE_PATH
+sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" $DEPLOY_MODULE_PATH/DEPLOY_MODULE.info
+sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" $DEPLOY_MODULE_PATH/DEPLOY_MODULE.module
+mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.info $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.info
+mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.module $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.module
+( cd $LOCAL_DOCROOT && drush -y en $DEPLOY_MODULE )
+
+
+
 # TODO: install modules (via deployment dependencies or update / install hook)
 # TODO: settings (via deployment module update / install)
 # TODO: create a snapshot of the fresh install (do not delete this)
