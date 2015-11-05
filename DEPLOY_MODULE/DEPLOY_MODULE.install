@@ -1,0 +1,416 @@
+<?php
+/**
+ * @file
+ * DEPLOY_MODULE install & updates.
+ */
+
+/**
+ * Installation process.
+ *
+ * Implements hook_install().
+ */
+function DEPLOY_MODULE_install() {
+  $modules = array();
+
+  // Administration.
+  $modules[] = 'admin_menu';
+  $modules[] = 'adminimal_admin_menu';
+  $modules[] = 'locale_auto_import';
+  $modules[] = 'module_filter';
+
+  // Advanced CSS/JS Aggregation.
+  $modules[] = 'advagg';
+  $modules[] = 'advagg_bundler';
+  $modules[] = 'advagg_css_compress';
+  $modules[] = 'advagg_js_compress';
+  $modules[] = 'advagg_mod';
+
+  // Bean.
+  $modules[] = 'bean';
+  $modules[] = 'bean_admin_ui';
+  $modules[] = 'bean_uuid';
+
+  // Chaos tool suite.
+  $modules[] = 'ctools';
+
+  // Clientside Validation.
+  $modules[] = 'clientside_validation';
+  $modules[] = 'clientside_validation_form';
+  $modules[] = 'clientside_validation_ife';
+
+  // Core.
+  $modules[] = 'block';
+  $modules[] = 'dblog';
+  $modules[] = 'field';
+  $modules[] = 'field_sql_storage';
+  $modules[] = 'field_ui';
+  $modules[] = 'file';
+  $modules[] = 'filter';
+  $modules[] = 'image';
+  $modules[] = 'list';
+  $modules[] = 'locale';
+  $modules[] = 'menu';
+  $modules[] = 'node';
+  $modules[] = 'number';
+  $modules[] = 'options';
+  $modules[] = 'path';
+  $modules[] = 'system';
+  $modules[] = 'taxonomy';
+  $modules[] = 'text';
+  $modules[] = 'translation';
+  $modules[] = 'update';
+  $modules[] = 'user';
+
+  // Date/Time.
+  $modules[] = 'date';
+  $modules[] = 'date_api';
+
+  // Development.
+  $modules[] = 'devel';
+  $modules[] = 'search_krumo';
+
+  // Display Suite.
+  $modules[] = 'ds';
+  $modules[] = 'ds_forms';
+  $modules[] = 'ds_ui';
+
+  // Features.
+  $modules[] = 'features';
+  $modules[] = 'uuid_features';
+
+  // Fields.
+  $modules[] = 'email';
+  $modules[] = 'entityreference';
+  $modules[] = 'fences';
+  $modules[] = 'fences_display_specific_wrapper';
+  $modules[] = 'field_group';
+  $modules[] = 'link';
+  $modules[] = 'smart_trim';
+  $modules[] = 'title';
+
+  // Frontend.
+  $modules[] = 'magic';
+
+  // glacier.
+  $modules[] = 'glacier_system';
+
+  // Media.
+  $modules[] = 'file_entity';
+  $modules[] = 'media';
+  $modules[] = 'image_progressive_effect';
+
+  // Multilingual.
+  $modules[] = 'l10n_update';
+
+  // Multilingual - Entity Translation.
+  $modules[] = 'entity_translation';
+
+  // Multilingual - Internationalization.
+  $modules[] = 'i18n';
+  $modules[] = 'i18n_block';
+  $modules[] = 'i18n_field';
+  $modules[] = 'i18n_menu';
+  $modules[] = 'i18n_node';
+  $modules[] = 'i18n_path';
+  $modules[] = 'i18n_select';
+  $modules[] = 'i18n_string';
+  $modules[] = 'i18n_translation';
+  $modules[] = 'i18n_variable';
+  $modules[] = 'i18nviews';
+
+  // Other.
+  $modules[] = 'addanother';
+  $modules[] = 'better_formats';
+  $modules[] = 'block_class';
+  $modules[] = 'blockify';
+  $modules[] = 'bower_manager';
+  $modules[] = 'colorbox';
+  $modules[] = 'entity';
+  $modules[] = 'field_formatter_settings';
+  $modules[] = 'focal_point';
+  $modules[] = 'formatter_field';
+  $modules[] = 'formatter_field_preset';
+  $modules[] = 'libraries';
+  $modules[] = 'multiform';
+  $modules[] = 'pathauto';
+  $modules[] = 'rabbit_hole';
+  $modules[] = 'rh_node';
+  $modules[] = 'rh_taxonomy';
+  $modules[] = 'strongarm';
+  $modules[] = 'token';
+  $modules[] = 'transliteration';
+
+  // Paragraphs.
+  $modules[] = 'paragraphs';
+
+  // Path management.
+  $modules[] = 'globalredirect';
+
+  // Performance and scalability.
+  // Follow the instructions (https://www.drupal.org/project/apdqc)
+  // before enabling the "apdqc" module.
+  // $modules[] = 'apdqc';
+  $modules[] = 'minify';
+
+  // SEO.
+  $modules[] = 'metatag';
+  $modules[] = 'metatag_views';
+
+  // UUID.
+  $modules[] = 'uuid';
+  $modules[] = 'uuid_path';
+
+  // User interface.
+  $modules[] = 'ife';
+  $modules[] = 'jquery_update';
+  $modules[] = 'select2';
+
+  // Variable.
+  $modules[] = 'variable';
+  $modules[] = 'variable_realm';
+  $modules[] = 'variable_store';
+
+  // Views.
+  $modules[] = 'better_exposed_filters';
+  $modules[] = 'draggableviews';
+  $modules[] = 'views';
+  $modules[] = 'views_bulk_operations';
+  $modules[] = 'views_tree';
+  $modules[] = 'views_ui';
+
+  // XML sitemap.
+  $modules[] = 'xmlsitemap';
+  $modules[] = 'xmlsitemap_i18n';
+  $modules[] = 'xmlsitemap_menu';
+  $modules[] = 'xmlsitemap_node';
+  $modules[] = 'xmlsitemap_taxonomy';
+
+  // Update the user profiles to add values to newly added profile fields
+  $batch = array(
+    'title' => t('Enable modules'), // Title to display while running.
+    'operations' => array(), // Operations to complete, in order. Defined below.
+    'finished' => '_DEPLOY_MODULE_batch_enable_module_finished', // Last function to call.
+    'init_message' => t('Initializing...'),
+    'progress_message' => t('Enabled @current out of @total.'),
+    'error_message' => t('Enabling modules encountered an error.'),
+    'file' => 'DEPLOY_MODULE.module',
+  );
+
+  foreach ($modules as $module) {
+    $batch['operations'][] = array('_DEPLOY_MODULE_batch_enable_module', array($module));
+  }
+
+  batch_set($batch);
+  batch_process();
+
+  // Variables.
+  // AdvAgg.
+  variable_set('advagg_ajax_render_alter', TRUE);
+  variable_set('advagg_browser_dns_prefetch', TRUE);
+  variable_set('advagg_bundler_active', TRUE);
+  variable_set('advagg_bundler_max_css', 2);
+  variable_set('advagg_bundler_max_js', 2);
+  variable_set('advagg_cache_level', 5);
+  variable_set('advagg_convert_absolute_to_protocol_relative_path', TRUE);
+  variable_set('advagg_css_compressor', 2);
+  variable_set('advagg_css_compress_inline', 2);
+  variable_set('advagg_css_fix_type', TRUE);
+  variable_set('advagg_enabled', TRUE);
+  variable_set('advagg_gzip', TRUE);
+  variable_set('advagg_js_compressor', 1);
+  variable_set('advagg_js_compress_add_license', FALSE);
+  variable_set('advagg_js_compress_inline', 1);
+  variable_set('advagg_js_fix_type', TRUE);
+  variable_set('advagg_mod_css_adjust_sort_browsers', TRUE);
+  variable_set('advagg_mod_css_adjust_sort_external', TRUE);
+  variable_set('advagg_mod_css_adjust_sort_inline', TRUE);
+  variable_set('advagg_mod_css_head_extract', TRUE);
+  variable_set('advagg_mod_css_preprocess', TRUE);
+  variable_set('advagg_mod_js_adjust_sort_browsers', TRUE);
+  variable_set('advagg_mod_js_adjust_sort_external', TRUE);
+  variable_set('advagg_mod_js_adjust_sort_inline', TRUE);
+  variable_set('advagg_mod_js_defer_inline_alter', TRUE);
+  variable_set('advagg_mod_js_footer', 3);
+  variable_set('advagg_mod_js_footer_inline_alter', TRUE);
+  variable_set('advagg_mod_js_get_external_dns', TRUE);
+  variable_set('advagg_mod_js_head_extract', TRUE);
+  variable_set('advagg_mod_js_no_ajaxpagestate', TRUE);
+  variable_set('advagg_mod_js_preprocess', TRUE);
+  variable_set('advagg_mod_js_remove_unused', TRUE);
+
+  // Blockify.
+  variable_set('blockify_blocks', array(
+    'blockify-logo' => 'blockify-logo',
+    'blockify-site-name' => 'blockify-site-name',
+    'blockify-site-slogan' => 'blockify-site-slogan',
+    'blockify-page-title' => 'blockify-page-title',
+    'blockify-breadcrumb' => 'blockify-breadcrumb',
+    'blockify-tabs' => 'blockify-tabs',
+    'blockify-messages' => 'blockify-messages',
+    'blockify-actions' => 'blockify-actions',
+    'blockify-feed-icons' => 'blockify-feed-icons',
+  ));
+
+  // Colorbox.
+  variable_set('colorbox_custom_settings_activate', TRUE);
+  variable_set('colorbox_maxheight', '90%');
+  variable_set('colorbox_maxwidth', '90%');
+
+  // Date.
+  variable_set('date_first_day', 1);
+  variable_set('date_format_long', 'l, j. F Y - G:i');
+  variable_set('date_format_medium', 'j. F Y - G:i');
+  variable_set('date_format_short', 'd.m.Y - H:i');
+
+  // Fences.
+  variable_set('fences_default_markup', TRUE);
+  variable_set('fences_default_classes', TRUE);
+
+  // Global Redirect.
+  variable_set('globalredirect_settings', array('language_redirect' => TRUE));
+
+  // Image.
+  variable_set('image_jpeg_quality', 80);
+  variable_set('image_style_quality_global_quality', 80);
+
+  // Internationalization.
+  variable_set('i18n_hide_translation_links', TRUE);
+  variable_set('language_negotiation_language', array(
+    'locale-url' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_url',
+        'switcher' => 'locale_language_switcher_url',
+        'url_rewrite' => 'locale_language_url_rewrite_url',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-session' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_session',
+        'switcher' => 'locale_language_switcher_session',
+        'url_rewrite' => 'locale_language_url_rewrite_session',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-user' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_user',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-browser' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_browser',
+      ),
+      'file' => 'includes/locale.inc',
+      'cache' => FALSE,
+    ),
+    'language-default' => array(
+      'callbacks' => array(
+        'language' => 'language_from_default',
+      ),
+    ),
+  ));
+  variable_set('language_negotiation_language_content', array(
+    'locale-url' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_url',
+        'switcher' => 'locale_language_switcher_url',
+        'url_rewrite' => 'locale_language_url_rewrite_url',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-session' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_session',
+        'switcher' => 'locale_language_switcher_session',
+        'url_rewrite' => 'locale_language_url_rewrite_session',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-user' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_user',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-browser' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_browser',
+      ),
+      'file' => 'includes/locale.inc',
+      'cache' => FALSE,
+    ),
+    'locale-interface' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_interface',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'language-default' => array(
+      'callbacks' => array(
+        'language' => 'language_from_default',
+      ),
+    ),
+  ));
+
+  // Metatag.
+  variable_set('default_metatag_config', array('global:frontpage' => TRUE));
+
+  // Node.
+  variable_set('node_admin_theme', TRUE);
+
+  // Pathauto.
+  variable_set('pathauto_node_pattern', '[node:menu-link:parents:join-path]/[node:title]');
+  variable_set('pathauto_taxonomy_term_pattern', '[term:vocabulary]/[term:name]');
+  variable_set('pathauto_user_pattern', 'user/[user:name]');
+  variable_set('pathauto_transliterate', TRUE);
+
+  // Select 2.
+  variable_set('select2_compression_type', 'minified');
+  variable_set('select2_min_options_count_for_search', 2);
+  variable_set('select2_use_for_all_select_elements', TRUE);
+  variable_set('select2_use_for_all_select_elements_for_admin_pages', TRUE);
+
+  // Title.
+  variable_set('title_bean', array(
+    'auto_attach' => array('title' => 'title'),
+    'hide_label' => array(
+      'page' => 'page',
+      'entity' => 'entity',
+    ),
+  ));
+  variable_set('title_file', array(
+    'auto_attach' => array('filename' => 'filename'),
+    'hide_label' => array(
+      'page' => 'page',
+      'entity' => 'entity',
+    ),
+  ));
+  variable_set('title_node', array(
+    'auto_attach' => array('title' => 'title'),
+    'hide_label' => array(
+      'page' => 'page',
+      'entity' => 'entity',
+    ),
+  ));
+  variable_set('title_taxonomy_term', array(
+    'auto_attach' => array(
+      'name' => 'name',
+      'description' => 'description',
+    ),
+    'hide_label' => array(
+      'page' => 'page',
+      'entity' => 'entity',
+    ),
+  ));
+
+  // User.
+  variable_set('user_register', FALSE);
+
+  // jQuery Update.
+  variable_set('jquery_update_compression_type', 'min');
+  variable_set('jquery_update_jquery_admin_version', '1.8');
+  variable_set('jquery_update_jquery_cdn', 'none');
+  variable_set('jquery_update_jquery_version', '1.11');
+}

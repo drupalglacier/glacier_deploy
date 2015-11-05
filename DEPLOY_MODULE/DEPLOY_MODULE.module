@@ -1,1 +1,15 @@
 <?php
+/**
+ * @file
+ * DEPLOY_MODULE helper module code.
+ */
+
+function _DEPLOY_MODULE_batch_enable_module($module, &$context) {
+  module_enable(array($module), TRUE);
+  $context['results']['processed']++;
+}
+
+function _DEPLOY_MODULE_batch_enable_module_finished($success, $results, $operations) {
+  $message = $success ? t('All modules enabled.') : t('Finished with error.');
+  drupal_set_message($message);
+}
