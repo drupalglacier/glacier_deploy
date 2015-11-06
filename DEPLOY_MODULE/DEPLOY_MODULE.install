@@ -409,7 +409,7 @@ function DEPLOY_MODULE_install() {
   variable_set('jquery_update_compression_type', 'min');
   variable_set('jquery_update_jquery_admin_version', '1.8');
   variable_set('jquery_update_jquery_cdn', 'none');
-  variable_set('jquery_update_jquery_version', '1.11');
+  variable_set('jquery_update_jquery_version', '1.10');
 
   // Enable modules in batch process to avoid exceeding memory limit.
   batch_set($batch);
