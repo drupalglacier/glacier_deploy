@@ -200,9 +200,6 @@ function DEPLOY_MODULE_install() {
     $batch['operations'][] = array('_DEPLOY_MODULE_batch_enable_module', array($module));
   }
 
-  batch_set($batch);
-  batch_process();
-
   // Variables.
   // AdvAgg.
   variable_set('advagg_ajax_render_alter', TRUE);
@@ -413,4 +410,8 @@ function DEPLOY_MODULE_install() {
   variable_set('jquery_update_jquery_admin_version', '1.8');
   variable_set('jquery_update_jquery_cdn', 'none');
   variable_set('jquery_update_jquery_version', '1.11');
+
+  // Enable modules in batch process to avoid exceeding memory limit.
+  batch_set($batch);
+  batch_process();
 }

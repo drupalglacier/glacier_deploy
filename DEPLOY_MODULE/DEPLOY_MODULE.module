@@ -11,5 +11,6 @@ function _DEPLOY_MODULE_batch_enable_module($module, &$context) {
 
 function _DEPLOY_MODULE_batch_enable_module_finished($success, $results, $operations) {
   $message = $success ? t('All modules enabled.') : t('Finished with error.');
+  cache_clear_all();
   drupal_set_message($message);
 }
