@@ -102,25 +102,25 @@ source $ENVIRONMENT_DIRECTORY/config.cfg
 # Check if all required variables, that don't have a default value, are set.
 if [ -z "$ACCOUNT_MAIL" ]
 then
-  echo "Variable ACCOUNT_MAIL not set".
+  printf "${RED}Variable ACCOUNT_MAIL not set${NC}\n"
   exit 3
 fi
 
 if [ -z "$DATABASE" ]
 then
-  echo "Variable DATABASE not set".
+  printf "${RED}Variable DATABASE not set${NC}\n"
   exit 3
 fi
 
 if [ -z "$DATABASE_USERNAME" ]
 then
-  echo "Variable DATABASE_USERNAME not set".
+  printf "${RED}Variable DATABASE_USERNAME not set${NC}\n"
   exit 3
 fi
 
 if [ -z "$DATABASE_PASSWORD" ]
 then
-  echo "Variable DATABASE_PASSWORD not set".
+  printf "${RED}Variable DATABASE_PASSWORD not set${NC}\n"
   exit 3
 fi
 
