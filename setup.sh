@@ -221,7 +221,10 @@ mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.install $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.
 
 
 
-# TODO: create a snapshot of the fresh install (do not delete this)
+# Create a snapshot of the fresh installation.
+( cd $LOCAL_DOCROOT && drush -y ard --destination="$LOCAL_BACKUP_DIRECTORY/freshinstall.tar.gz" )
+
+
 
 printf "${GREEN}Setup was successful!${NC}\n"
 printf "${YELLOW}Please go to /admin/modules and manually enable $DEPLOY_MODULE ${RED}(do not use drush!)${NC}\n"
