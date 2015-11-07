@@ -82,6 +82,17 @@ done
 
 
 
+# Setup the basic environment.
+if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
+then
+  mkdir -p $ENVIRONMENT_DIRECTORY
+  cp config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
+fi
+
+source $ENVIRONMENT_DIRECTORY/config.cfg
+
+
+
 # Check if all required variables, that don't have a default value, are set.
 if [ -z "$ACCOUNT_MAIL" ]
 then
@@ -106,17 +117,6 @@ then
   echo "Variable DATABASE_PASSWORD not set".
   exit 3
 fi
-
-
-
-# Setup the basic environment.
-if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
-then
-  mkdir -p $ENVIRONMENT_DIRECTORY
-  cp config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
-fi
-
-source $ENVIRONMENT_DIRECTORY/config.cfg
 
 
 
