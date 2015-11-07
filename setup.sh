@@ -17,6 +17,12 @@ DATABASE_DRIVER="mysql"
 DATABASE_PREFIX=""
 ADMIN_BASE_THEME="shiny"
 
+# Text color variables.
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
 # Get settings from the script call.
 # e.g. ./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1 --admin-base-theme=shiny
 for i in "$@"
@@ -209,11 +215,13 @@ sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" $DEPLOY_MODULE_PATH/DEPLOY_MODULE.i
 mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.info $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.info
 mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.module $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.module
 mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.install $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.install
-# Enabling with drush not possible because of problem with batch process in hook_install().
-# ( cd $LOCAL_DOCROOT && drush -y en $DEPLOY_MODULE )
+# Enabling the module with drush is not possible because of a problem with batch
+# processing in hook_install(). We display a message that asks the user to
+# manually enable the module at the end of the script.
 
 
 
-# TODO: install modules (via deployment dependencies or update / install hook)
-# TODO: settings (via deployment module update / install)
 # TODO: create a snapshot of the fresh install (do not delete this)
+
+printf "${GREEN}Setup was successful!${NC}\n"
+printf "${YELLOW}Please go to /admin/modules and manually enable $DEPLOY_MODULE ${RED}(do not use drush!)${NC}\n"
