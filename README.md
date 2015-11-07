@@ -11,7 +11,7 @@ Before starting the setup script you must check whether the data in the
 
 If you want to the make changes to the `config.cfg.example` or
 `settings.local.php.example` files you need to create your own `environment`
-directory. The `environment` directory is usually located one level below the
+directory. The `environment` directory must be located one level below the
 docroot directory and must not be accessible from the web. Copy the desired
 file(s) to the `environment` directory and remove the `.example` ending. Perform the
 desired changes on the `config.cfg` or `settings.local.php` file. The
