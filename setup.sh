@@ -221,6 +221,25 @@ mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.install $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.
 
 
 
+
+# Setup git.
+if [ ! -f $LOCAL_WORKSPACE/.gitignore ]
+then
+  # Add a .gitignore file to the workspace.
+  cp .gitignore.example $LOCAL_WORKSPACE/.gitignore
+fi
+
+( cd $LOCAL_WORKSPACE && git init )
+( cd $LOCAL_WORKSPACE && git add --all )
+( cd $LOCAL_WORKSPACE && git commit -m "initial commit" )
+( cd $LOCAL_WORKSPACE && git branch staging )
+( cd $LOCAL_WORKSPACE && git branch production )
+( cd $LOCAL_WORKSPACE && git checkout -b dev )
+( cd $LOCAL_WORKSPACE && git branch -d master )
+( cd $LOCAL_WORKSPACE && git remote add origin $REPOSITORY )
+
+
+
 # Create a snapshot of the fresh installation.
 ( cd $LOCAL_DOCROOT && drush -y ard --destination="$LOCAL_BACKUP_DIRECTORY/freshinstall.tar.gz" )
 

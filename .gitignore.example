@@ -1,0 +1,10 @@
+default
+
+all/libraries
+
+all/modules/contrib
+all/modules/external
+all/modules/features/glacier_system
+
+all/themes/contrib
+all/themes/external
