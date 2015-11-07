@@ -1,13 +1,16 @@
 #!/bin/bash
+# Commands which fail will cause the shell script to exit immediately.
+set -e
+
 CURRENT_DIRECTORY=$(pwd)
 ENVIRONMENT_DIRECTORY="$(dirname "$CURRENT_DIRECTORY")/environment"
 PROJECT_MACHINE_NAME="project"
 PROJECT_HUMAN_READABLE_NAME="Project"
-ACCOUNT_MAIL="ACCOUNT_MAIL"
+ACCOUNT_MAIL=""
 ACCOUNT_NAME="admin"
-DATABASE="DATABASE"
-DATABASE_USERNAME="DATABASE_USERNAME"
-DATABASE_PASSWORD="DATABASE_PASSWORD"
+DATABASE=""
+DATABASE_USERNAME=""
+DATABASE_PASSWORD=""
 DATABASE_HOST="127.0.0.1"
 DATABASE_PORT=""
 DATABASE_DRIVER="mysql"
@@ -76,6 +79,33 @@ case $i in
     ;;
 esac
 done
+
+
+
+# Check if all required variables, that don't have a default value, are set.
+if [ -z "$ACCOUNT_MAIL" ]
+then
+  echo "Variable ACCOUNT_MAIL not set".
+  exit 3
+fi
+
+if [ -z "$DATABASE" ]
+then
+  echo "Variable DATABASE not set".
+  exit 3
+fi
+
+if [ -z "$DATABASE_USERNAME" ]
+then
+  echo "Variable DATABASE_USERNAME not set".
+  exit 3
+fi
+
+if [ -z "$DATABASE_PASSWORD" ]
+then
+  echo "Variable DATABASE_PASSWORD not set".
+  exit 3
+fi
 
 
 
