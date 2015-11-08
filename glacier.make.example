@@ -61,9 +61,6 @@ projects[title][subdir] = contrib
 ; Frontend
 projects[magic][subdir] = contrib
 
-; glacier
-projects[glacier_system][subdir] = contrib
-
 ; Media
 projects[file_entity][subdir] = contrib
 projects[media][subdir] = contrib
