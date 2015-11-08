@@ -3,6 +3,8 @@ node_modules/
 
 all/libraries
 
+all/translations
+
 all/modules/contrib
 all/modules/external
 all/modules/features/glacier_system
