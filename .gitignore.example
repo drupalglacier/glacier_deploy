@@ -1,4 +1,5 @@
 default
+node_modules/
 
 all/libraries
 
