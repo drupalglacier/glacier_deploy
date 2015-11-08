@@ -1,4 +1,5 @@
-default
+default/files
+settings.local.php
 node_modules/
 
 all/libraries
