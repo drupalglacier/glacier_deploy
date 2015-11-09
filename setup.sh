@@ -173,6 +173,9 @@ then
   # Generate a random string to use as hash salt in the settings.local.php.
   RANDOM_STRING=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
   sed -i -e "s#RANDOM_STRING_PLACEHOLDER#$RANDOM_STRING#g" $ENVIRONMENT_DIRECTORY/settings.local.php
+
+  # Replace environment setting placeholder string.
+  sed -i -e "s#ENVIRONMENT_PLACEHOLDER#$ENVIRONMENT#g" $ENVIRONMENT_DIRECTORY/settings.local.php
 fi
 
 
