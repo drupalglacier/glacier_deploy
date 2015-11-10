@@ -15,3 +15,12 @@ REMOTE_DOCROOT="/var/www/$PROJECT_MACHINE_NAME"
 REMOTE_WORKSPACE="$REMOTE_DOCROOT/web/sites"
 REMOTE_MAKE_FILE="$REMOTE_WORKSPACE/glacier.make"
 REMOTE_BACKUP_DIRECTORY="/var/www/$PROJECT_MACHINE_NAME/backup"
+
+# FTP data.
+# (only needed if you plan to user deploy_ftp.sh).
+FTP_HOST=""
+FTP_USER=""
+FTP_PASS=""
+FTP_DOCROOT="/"
+FTP_DELETE="--delete"
+FTP_EXCLUDE="--exclude tmp/ --exclude stats/"
