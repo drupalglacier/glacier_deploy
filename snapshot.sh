@@ -25,4 +25,5 @@ done
 
 source $ENVIRONMENT_DIRECTORY/config.cfg
 
+( cd $LOCAL_DOCROOT && drush -y cc all )
 ( cd $LOCAL_DOCROOT && drush -y ard --destination="$LOCAL_BACKUP_DIRECTORY/$FILE_NAME.tar.gz" )
