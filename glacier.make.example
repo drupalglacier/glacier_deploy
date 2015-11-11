@@ -84,7 +84,7 @@ projects[addanother][subdir] = contrib
 projects[better_formats][subdir] = contrib
 projects[block_class][subdir] = contrib
 projects[blockify][subdir] = contrib
-projects[bower_manager][subdir] = contrib
+projects[breakpoints][subdir] = contrib
 projects[colorbox][subdir] = contrib
 projects[entity][subdir] = contrib
 projects[field_formatter_settings][subdir] = contrib
@@ -110,6 +110,9 @@ projects[globalredirect][subdir] = contrib
 projects[apdqc][subdir] = contrib
 projects[apdqc][version] = 1.x-dev
 projects[minify][subdir] = contrib
+
+; Picture
+projects[picture][subdir] = contrib
 
 ; SEO
 projects[metatag][subdir] = contrib

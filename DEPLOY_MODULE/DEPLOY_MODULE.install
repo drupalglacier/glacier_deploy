@@ -124,6 +124,7 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'block_class';
   $modules[] = 'blockify';
   $modules[] = 'bower_manager';
+  $modules[] = 'breakpoints';
   $modules[] = 'colorbox';
   $modules[] = 'entity';
   $modules[] = 'field_formatter_settings';
@@ -151,6 +152,9 @@ function DEPLOY_MODULE_install() {
   // before enabling the "apdqc" module.
   // $modules[] = 'apdqc';
   $modules[] = 'minify';
+
+  // Picture.
+  $modules[] = 'picture';
 
   // SEO.
   $modules[] = 'metatag';
@@ -362,6 +366,10 @@ function DEPLOY_MODULE_install() {
   variable_set('pathauto_taxonomy_term_pattern', '[term:vocabulary]/[term:name]');
   variable_set('pathauto_user_pattern', 'user/[user:name]');
   variable_set('pathauto_transliterate', TRUE);
+
+  // Picture.
+  variable_set('picture_fallback_method', 'src');
+  variable_set('picture_img_sizes_output_method', 'img_srcset');
 
   // Select 2.
   variable_set('select2_compression_type', 'minified');
