@@ -7,6 +7,29 @@ ENVIRONMENT_DIRECTORY="$(dirname "$CURRENT_DIRECTORY")/environment"
 
 source $ENVIRONMENT_DIRECTORY/config.cfg
 
+
+
+# Ask for ftp login data if they are not set in the config.
+if [ -z "$FTP_USER" ]
+then
+  printf "Please enter the ftp user:\n"
+  read FTP_USER
+fi
+
+if [ -z "$FTP_PASS" ]
+then
+  printf "Please enter the ftp password:\n"
+  read -s FTP_PASS
+fi
+
+if [ -z "$FTP_HOST" ]
+then
+  printf "Please enter the ftp host:\n"
+  read FTP_HOST
+fi
+
+
+
 # Create a snaphsot of the current state.
 ./snapshot.sh
 
