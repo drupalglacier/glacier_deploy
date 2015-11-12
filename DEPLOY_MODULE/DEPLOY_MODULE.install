@@ -97,6 +97,7 @@ function DEPLOY_MODULE_install() {
   // Media.
   $modules[] = 'file_entity';
   $modules[] = 'media';
+  $modules[] = 'media_browser_plus';
   $modules[] = 'image_progressive_effect';
 
   // Multilingual.
