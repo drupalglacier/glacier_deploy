@@ -190,11 +190,11 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'xmlsitemap_node';
   $modules[] = 'xmlsitemap_taxonomy';
 
-  // Update the user profiles to add values to newly added profile fields
+  // Enable modules in a batch process to prevent exceeding the memory limit.
   $batch = array(
-    'title' => t('Enable modules'), // Title to display while running.
-    'operations' => array(), // Operations to complete, in order. Defined below.
-    'finished' => '_DEPLOY_MODULE_batch_enable_module_finished', // Last function to call.
+    'title' => t('Enable modules'),
+    'operations' => array(),
+    'finished' => '_DEPLOY_MODULE_batch_enable_module_finished',
     'init_message' => t('Initializing...'),
     'progress_message' => t('Enabled @current out of @total.'),
     'error_message' => t('Enabling modules encountered an error.'),
