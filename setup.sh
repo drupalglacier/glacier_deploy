@@ -244,7 +244,7 @@ fi
 
 
 # Create a snapshot of the fresh installation.
-( cd $LOCAL_DOCROOT && drush -y ard --destination="$LOCAL_BACKUP_DIRECTORY/freshinstall.tar.gz" )
+./snapshot.sh --file-name=freshinstall
 
 
 
