@@ -1,192 +1,258 @@
+core = 7.x
 api = 2
 
 ; Core
-core = 7.x
-projects[] = drupal
+projects[drupal][version] = "7.41"
 
 ; Performance patches (according to https://groups.drupal.org/node/210683).
-projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-1443308-49-module_load_include-static-cache.patch
-projects[drupal][patch][] = https://www.drupal.org/files/issues/D7_improve_theme_registry-2339447-65.patch
-projects[drupal][patch][] = https://www.drupal.org/files/drupal-1443342-1-inline-file_uri_scheme-in-file_stream_wrapper_uri_normalize.patch
-projects[drupal][patch][] = https://www.drupal.org/files/drupal-1081266-102-drupal_get_filename-D7.patch
+projects[drupal][patch][] = "https://www.drupal.org/files/issues/drupal-1443308-49-module_load_include-static-cache.patch"
+projects[drupal][patch][] = "https://www.drupal.org/files/issues/D7_improve_theme_registry-2339447-65.patch"
+projects[drupal][patch][] = "https://www.drupal.org/files/drupal-1443342-1-inline-file_uri_scheme-in-file_stream_wrapper_uri_normalize.patch"
+projects[drupal][patch][] = "https://www.drupal.org/files/drupal-1081266-102-drupal_get_filename-D7.patch"
 
 ; Ignore npm vendor folder to improve directory search performance (https://www.drupal.org/node/2329453).
-projects[drupal][patch][] = https://www.drupal.org/files/issues/2329453-8-ignore_node_modules_directory.patch
+projects[drupal][patch][] = "https://www.drupal.org/files/issues/2329453-8-ignore_node_modules_directory.patch"
 
 
 
 ; Modules (contrib)
-; Administration
-projects[admin_menu][subdir] = contrib
-projects[admin_menu][version] = 3.x-dev
-projects[locale_auto_import][subdir] = contrib
-projects[module_filter][subdir] = contrib
+projects[addanother][subdir] = "contrib"
+projects[addanother][version] = "2.2"
 
-; Advanced CSS/JS Aggregation
-projects[advagg][subdir] = contrib
+projects[admin_menu][subdir] = "contrib"
+projects[admin_menu][version] = "3.x-dev"
 
-; Bean
-projects[bean][subdir] = contrib
+projects[apdqc][subdir] = "contrib"
+projects[apdqc][version] = "1.x-dev"
 
-; Chaos tool suite
-projects[ctools][subdir] = contrib
+projects[advagg][subdir] = "contrib"
+projects[advagg][version] = "2.16"
 
-; Clientside Validation
-projects[clientside_validation][subdir] = contrib
-projects[clientside_validation][version] = 1.x-dev
+projects[bean][subdir] = "contrib"
+projects[bean][version] = "1.9"
 
-; Date/Time
-projects[date][subdir] = contrib
+projects[better_exposed_filters][subdir] = "contrib"
+projects[better_exposed_filters][version] = "3.2"
 
-; Development
-projects[devel][subdir] = contrib
-projects[search_krumo][subdir] = contrib
+projects[better_formats][subdir] = "contrib"
+projects[better_formats][version] = "1.0-beta1"
 
-; Display Suite
-projects[ds][subdir] = contrib
+projects[block_class][subdir] = "contrib"
+projects[block_class][version] = "2.1"
 
-; Features
-projects[features][subdir] = contrib
-projects[uuid_features][subdir] = contrib
+projects[blockify][subdir] = "contrib"
+projects[blockify][version] = "1.2"
 
-; Fields
-projects[email][subdir] = contrib
-projects[entityreference][subdir] = contrib
-projects[fences][subdir] = contrib
-projects[field_group][subdir] = contrib
-projects[link][subdir] = contrib
-projects[smart_trim][subdir] = contrib
-projects[title][subdir] = contrib
+projects[breakpoints][subdir] = "contrib"
+projects[breakpoints][version] = "1.3"
 
-; Frontend
-projects[magic][subdir] = contrib
+projects[ctools][subdir] = "contrib"
+projects[ctools][version] = "1.9"
 
-; Media
-projects[file_entity][subdir] = contrib
-projects[media][subdir] = contrib
-projects[media][version] = 2.x-dev
-projects[media_browser_plus][subdir] = contrib
-projects[media_browser_plus][version] = 3.x-dev
+projects[clientside_validation][subdir] = "contrib"
+projects[clientside_validation][version] = "1.x-dev"
 
-; Multilingual
-projects[l10n_update][subdir] = contrib
+projects[colorbox][subdir] = "contrib"
+projects[colorbox][version] = "2.10"
 
-; Multilingual - Entity Translation
-projects[entity_translation][subdir] = contrib
+projects[date][subdir] = "contrib"
+projects[date][version] = "2.9"
 
-; Multilingual - Internationalization
-projects[i18n][subdir] = contrib
-projects[i18nviews][subdir] = contrib
-projects[i18nviews][version] = 3.x-dev
+projects[devel][subdir] = "contrib"
+projects[devel][version] = "1.5"
 
-; Other
-projects[addanother][subdir] = contrib
-projects[better_formats][subdir] = contrib
-projects[block_class][subdir] = contrib
-projects[blockify][subdir] = contrib
-projects[breakpoints][subdir] = contrib
-projects[colorbox][subdir] = contrib
-projects[entity][subdir] = contrib
-projects[field_formatter_settings][subdir] = contrib
-projects[focal_point][subdir] = contrib
-projects[formatter_field][subdir] = contrib
-projects[formatter_field][version] = 1.x-dev
-projects[formatter_field_preset][subdir] = contrib
-projects[libraries][subdir] = contrib
-projects[multiform][subdir] = contrib
-projects[pathauto][subdir] = contrib
-projects[rabbit_hole][subdir] = contrib
-projects[strongarm][subdir] = contrib
-projects[token][subdir] = contrib
-projects[transliteration][subdir] = contrib
+projects[draggableviews][subdir] = "contrib"
+projects[draggableviews][version] = "2.1"
 
-; Paragraphs
-projects[paragraphs][subdir] = contrib
+projects[ds][subdir] = "contrib"
+projects[ds][version] = "2.11"
 
-; Path management
-projects[globalredirect][subdir] = contrib
+projects[email][subdir] = "contrib"
+projects[email][version] = "1.3"
 
-; Performance and scalability
-projects[apdqc][subdir] = contrib
-projects[apdqc][version] = 1.x-dev
-projects[minify][subdir] = contrib
+projects[entity][subdir] = "contrib"
+projects[entity][version] = "1.6"
 
-; Picture
-projects[picture][subdir] = contrib
+projects[entity_translation][subdir] = "contrib"
+projects[entity_translation][version] = "1.0-beta4"
 
-; SEO
-projects[metatag][subdir] = contrib
+projects[entityreference][subdir] = "contrib"
+projects[entityreference][version] = "1.1"
 
-; UUID
-projects[uuid][subdir] = contrib
+projects[features][subdir] = "contrib"
+projects[features][version] = "2.7"
 
-; User interface
-projects[ife][subdir] = contrib
-projects[ife][version] = 2.x-dev
-projects[jquery_update][subdir] = contrib
-projects[select2][subdir] = contrib
+projects[fences][subdir] = "contrib"
+projects[fences][version] = "1.2"
 
-; Variable
-projects[variable][subdir] = contrib
+projects[field_formatter_settings][subdir] = "contrib"
+projects[field_formatter_settings][version] = "1.1"
 
-; Views
-projects[better_exposed_filters][subdir] = contrib
-projects[draggableviews][subdir] = contrib
-projects[views][subdir] = contrib
-projects[views_bulk_operations][subdir] = contrib
-projects[views_tree][subdir] = contrib
+projects[field_group][subdir] = "contrib"
+projects[field_group][version] = "1.4"
 
-; XML sitemap
-projects[xmlsitemap][subdir] = contrib
+projects[file_entity][subdir] = "contrib"
+projects[file_entity][version] = "2.0-beta2"
+
+projects[picture][subdir] = "contrib"
+projects[picture][version] = "2.13"
+
+projects[focal_point][subdir] = "contrib"
+projects[focal_point][version] = "1.0-beta4"
+
+projects[formatter_field][subdir] = "contrib"
+projects[formatter_field][version] = "1.x-dev"
+
+projects[formatter_field_preset][subdir] = "contrib"
+projects[formatter_field_preset][version] = "1.x-dev"
+
+projects[globalredirect][subdir] = "contrib"
+projects[globalredirect][version] = "1.5"
+
+projects[i18n][subdir] = "contrib"
+projects[i18n][version] = "1.13"
+
+projects[i18nviews][subdir] = "contrib"
+projects[i18nviews][version] = "3.x-dev"
+
+projects[ife][subdir] = "contrib"
+projects[ife][version] = "2.x-dev"
+
+projects[jquery_update][subdir] = "contrib"
+projects[jquery_update][version] = "2.7"
+
+projects[l10n_update][subdir] = "contrib"
+projects[l10n_update][version] = "2.0"
+
+projects[libraries][subdir] = "contrib"
+projects[libraries][version] = "2.2"
+
+projects[link][subdir] = "contrib"
+projects[link][version] = "1.3"
+
+projects[locale_auto_import][subdir] = "contrib"
+projects[locale_auto_import][version] = "1.0"
+
+projects[magic][subdir] = "contrib"
+projects[magic][version] = "2.2"
+
+projects[media][subdir] = "contrib"
+projects[media][version] = "2.x-dev"
+
+projects[media_browser_plus][subdir] = "contrib"
+projects[media_browser_plus][version] = "3.x-dev"
+
+projects[metatag][subdir] = "contrib"
+projects[metatag][version] = "1.7"
+
+projects[minify][subdir] = "contrib"
+projects[minify][version] = "1.3"
+
+projects[module_filter][subdir] = "contrib"
+projects[module_filter][version] = "2.0"
+
+projects[multiform][subdir] = "contrib"
+projects[multiform][version] = "1.1"
+
+projects[paragraphs][subdir] = "contrib"
+projects[paragraphs][version] = "1.0-rc4"
+
+projects[pathauto][subdir] = "contrib"
+projects[pathauto][version] = "1.3"
+
+projects[rabbit_hole][subdir] = "contrib"
+projects[rabbit_hole][version] = "2.23"
+
+projects[search_krumo][subdir] = "contrib"
+projects[search_krumo][version] = "1.6"
+
+projects[select2][subdir] = "contrib"
+projects[select2][version] = "1.x-dev"
+
+projects[smart_trim][subdir] = "contrib"
+projects[smart_trim][version] = "1.5"
+
+projects[strongarm][subdir] = "contrib"
+projects[strongarm][version] = "2.0"
+
+projects[title][subdir] = "contrib"
+projects[title][version] = "1.0-alpha7"
+
+projects[token][subdir] = "contrib"
+projects[token][version] = "1.6"
+
+projects[transliteration][subdir] = "contrib"
+projects[transliteration][version] = "3.2"
+
+projects[uuid][subdir] = "contrib"
+projects[uuid][version] = "1.0-beta1"
+
+projects[uuid_features][subdir] = "contrib"
+projects[uuid_features][version] = "1.0-alpha4"
+
+projects[variable][subdir] = "contrib"
+projects[variable][version] = "2.5"
+
+projects[views][subdir] = "contrib"
+projects[views][version] = "3.13"
+
+projects[views_bulk_operations][subdir] = "contrib"
+projects[views_bulk_operations][version] = "3.3"
+
+projects[views_tree][subdir] = "contrib"
+projects[views_tree][version] = "2.0"
+
+projects[xmlsitemap][subdir] = "contrib"
+projects[xmlsitemap][version] = "2.2"
 
 
 
 ; Modules (external)
-projects[bower_manager][download][type] = get
-projects[bower_manager][download][url] = https://github.com/maoberlehnerdrupal/bower_manager/archive/7.x-1.x-dev.zip
-projects[bower_manager][type] = module
-projects[bower_manager][subdir] = external
+projects[bower_manager][download][type] = "get"
+projects[bower_manager][download][url] = "https://github.com/maoberlehnerdrupal/bower_manager/archive/7.x-1.x-dev.zip"
+projects[bower_manager][type] = "module"
+projects[bower_manager][subdir] = "external"
 
-projects[fences_display_specific_wrapper][download][type] = get
-projects[fences_display_specific_wrapper][download][url] = https://github.com/maoberlehnerdrupal/fences_display_specific_wrapper/archive/7.x-1.x-dev.zip
-projects[fences_display_specific_wrapper][type] = module
-projects[fences_display_specific_wrapper][subdir] = external
+projects[fences_display_specific_wrapper][download][type] = "get"
+projects[fences_display_specific_wrapper][download][url] = "https://github.com/maoberlehnerdrupal/fences_display_specific_wrapper/archive/7.x-1.x-dev.zip"
+projects[fences_display_specific_wrapper][type] = "module"
+projects[fences_display_specific_wrapper][subdir] = "external"
 
-projects[image_progressive_effect][download][type] = get
-projects[image_progressive_effect][download][url] = https://github.com/maoberlehnerdrupal/image_progressive_effect/archive/7.x-1.x-dev.zip
-projects[image_progressive_effect][type] = module
-projects[image_progressive_effect][subdir] = external
+projects[image_progressive_effect][download][type] = "get
+projects[image_progressive_effect][download][url] = "https://github.com/maoberlehnerdrupal/image_progressive_effect/archive/7.x-1.x-dev.zip"
+projects[image_progressive_effect][type] = "module"
+projects[image_progressive_effect][subdir] = "external"
 
 
 
 ; Features
-projects[glacier_system][download][type] = get
-projects[glacier_system][download][url] = https://github.com/drupalglacier/glacier_system/archive/7.x-1.x-dev.zip
-projects[glacier_system][type] = module
-projects[glacier_system][subdir] = features
+projects[glacier_system][download][type] = "get"
+projects[glacier_system][download][url] = "https://github.com/drupalglacier/glacier_system/archive/7.x-1.x-dev.zip"
+projects[glacier_system][type] = "module"
+projects[glacier_system][subdir] = "features"
 
 
 
 ; Themes (contrib)
-projects[shiny][subdir] = contrib
+projects[shiny][subdir] = "contrib"
 
 
 
 ; Themes (external)
-projects[glacier][download][type] = get
-projects[glacier][download][url] = https://github.com/drupalglacier/glacier/archive/7.x-2.x-dev.zip
-projects[glacier][type] = theme
-projects[glacier][subdir] = external
+projects[glacier][download][type] = "get"
+projects[glacier][download][url] = "https://github.com/drupalglacier/glacier/archive/7.x-2.x-dev.zip"
+projects[glacier][type] = "theme"
+projects[glacier][subdir] = "external"
 
 
 
 ; Libraries
-libraries[select2][download][type] = get
-libraries[select2][download][url] = https://github.com/select2/select2/archive/3.5.4.tar.gz
-libraries[select2][directory_name] = select2
-libraries[select2][type] = library
+libraries[select2][download][type] = "get"
+libraries[select2][download][url] = "https://github.com/select2/select2/archive/3.5.4.tar.gz"
+libraries[select2][directory_name] = "select2"
+libraries[select2][type] = "library"
 
 
 
 ; Translations
-; translations[] = de
+; translations[] = "de"
