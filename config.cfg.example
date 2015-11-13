@@ -2,7 +2,6 @@
 ENVIRONMENT="dev"
 
 # General.
-KEEP_BACKUPS=3
 REPOSITORY="git@github.com:$PROJECT_MACHINE_NAME/$PROJECT_MACHINE_NAME.git"
 
 # Directories.
