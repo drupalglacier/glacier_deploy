@@ -93,6 +93,9 @@ if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
 then
   mkdir -p $ENVIRONMENT_DIRECTORY
   cp config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
+
+  # Replace project machine name placeholder string.
+  sed -i -e "s#PROJECT_MACHINE_NAME_PLACEHOLDER#$PROJECT_MACHINE_NAME#g" $ENVIRONMENT_DIRECTORY/config.cfg
 fi
 
 source $ENVIRONMENT_DIRECTORY/config.cfg
