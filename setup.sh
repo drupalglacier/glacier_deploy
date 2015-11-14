@@ -1,9 +1,10 @@
 #!/bin/bash
-# Commands which fail will cause the shell script to exit immediately.
-set -e
+# Load the bootstrap script.
+source _bootstrap.sh
 
-CURRENT_DIRECTORY=$(pwd)
-ENVIRONMENT_DIRECTORY="$(dirname "$CURRENT_DIRECTORY")/environment"
+
+
+# Default variables.
 PROJECT_MACHINE_NAME="project"
 PROJECT_HUMAN_READABLE_NAME="Project"
 ACCOUNT_MAIL=""
@@ -17,11 +18,7 @@ DATABASE_DRIVER="mysql"
 DATABASE_PREFIX=""
 ADMIN_BASE_THEME="shiny"
 
-# Text color variables.
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+
 
 # Get settings from the script call.
 # e.g. ./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1 --admin-base-theme=shiny
@@ -92,7 +89,7 @@ done
 if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
 then
   mkdir -p $ENVIRONMENT_DIRECTORY
-  cp config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
+  cp files/config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
 
   # Replace project machine name placeholder string.
   sed -i -e "s#PROJECT_MACHINE_NAME_PLACEHOLDER#$PROJECT_MACHINE_NAME#g" $ENVIRONMENT_DIRECTORY/config.cfg
@@ -133,7 +130,7 @@ fi
 if [ ! -f $LOCAL_MAKE_FILE ]
 then
   mkdir -p $LOCAL_WORKSPACE/all
-  cp glacier.make.example $LOCAL_MAKE_FILE
+  cp files/glacier.make.example $LOCAL_MAKE_FILE
 fi
 
 drush -y make $LOCAL_MAKE_FILE $LOCAL_DOCROOT/tmp
@@ -152,7 +149,7 @@ rm -Rf $LOCAL_DOCROOT/tmp
 chmod -R 755 $LOCAL_WORKSPACE/default
 chmod 755 $LOCAL_WORKSPACE/default/settings.php
 rm -f $LOCAL_WORKSPACE/default/settings.php
-cp settings.php.example $LOCAL_WORKSPACE/default/settings.php
+cp files/settings.php.example $LOCAL_WORKSPACE/default/settings.php
 
 # Replace placeholder strings in the main settings file.
 sed -i -e "s#PATH_TO_LOCAL_SETTINGS_PLACEHOLDER#$ENVIRONMENT_DIRECTORY/settings.local.php#g" $LOCAL_WORKSPACE/default/settings.php
@@ -162,7 +159,7 @@ chmod 444 $LOCAL_WORKSPACE/default/settings.php
 
 if [ ! -f $ENVIRONMENT_DIRECTORY/settings.local.php ]
 then
-  cp settings.local.php.example $ENVIRONMENT_DIRECTORY/settings.local.php
+  cp files/settings.local.php.example $ENVIRONMENT_DIRECTORY/settings.local.php
 
   # Replace database credentials placeholder strings.
   sed -i -e "s#DATABASE_PLACEHOLDER#$DATABASE#g" $ENVIRONMENT_DIRECTORY/settings.local.php
@@ -195,7 +192,7 @@ mv $LOCAL_WORKSPACE/all/themes/external/$PROJECT_MACHINE_NAME $LOCAL_WORKSPACE/a
 # Create the admin sub theme.
 ADMIN_SUB_THEME="${PROJECT_MACHINE_NAME}_admin"
 ADMIN_SUB_THEME_PATH="$LOCAL_WORKSPACE/all/themes/custom/$ADMIN_SUB_THEME"
-cp -R ADMIN_SUB_THEME $LOCAL_WORKSPACE/all/themes/custom
+cp -R files/ADMIN_SUB_THEME $LOCAL_WORKSPACE/all/themes/custom
 mv $LOCAL_WORKSPACE/all/themes/custom/ADMIN_SUB_THEME $ADMIN_SUB_THEME_PATH
 sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" $ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css
 sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" $ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js
@@ -213,7 +210,7 @@ mv $ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info $ADMIN_SUB_THEME_PATH/$ADMIN_SUB_T
 DEPLOY_MODULE="${PROJECT_MACHINE_NAME}_deploy"
 DEPLOY_MODULE_PATH="$LOCAL_WORKSPACE/all/modules/custom/$DEPLOY_MODULE"
 mkdir -p $LOCAL_WORKSPACE/all/modules/custom
-cp -R DEPLOY_MODULE $LOCAL_WORKSPACE/all/modules/custom
+cp -R files/DEPLOY_MODULE $LOCAL_WORKSPACE/all/modules/custom
 mv $LOCAL_WORKSPACE/all/modules/custom/DEPLOY_MODULE $DEPLOY_MODULE_PATH
 sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" $DEPLOY_MODULE_PATH/DEPLOY_MODULE.info
 sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" $DEPLOY_MODULE_PATH/DEPLOY_MODULE.module
@@ -232,7 +229,7 @@ mv $DEPLOY_MODULE_PATH/DEPLOY_MODULE.install $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.
 if [ ! -f $LOCAL_WORKSPACE/.gitignore ]
 then
   # Add a .gitignore file to the workspace.
-  cp .gitignore.example $LOCAL_WORKSPACE/.gitignore
+  cp files/.gitignore.example $LOCAL_WORKSPACE/.gitignore
 fi
 
 ( cd $LOCAL_WORKSPACE && git init )

@@ -1,13 +1,6 @@
 #!/bin/bash
-# Commands which fail will cause the shell script to exit immediately.
-set -e
-
-CURRENT_DIRECTORY=$(pwd)
-ENVIRONMENT_DIRECTORY="$(dirname "$CURRENT_DIRECTORY")/environment"
-
-source $ENVIRONMENT_DIRECTORY/config.cfg
-
-
+# Load the bootstrap script.
+source _bootstrap.sh
 
 # Ask for ftp login data if they are not set in the config.
 if [ -z "$FTP_USER" ]
