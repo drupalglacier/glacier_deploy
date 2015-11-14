@@ -2,6 +2,8 @@
 # Load the bootstrap script.
 source _bootstrap.sh
 
+
+
 # Ask for ftp login data if they are not set in the config.
 if [ -z "$FTP_USER" ]
 then
