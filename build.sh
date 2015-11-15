@@ -42,7 +42,7 @@ fi
 
 
 
-# Revert all enabled feature module on your site.
+# Revert all enabled feature modules on your site.
 ( cd $LOCAL_DOCROOT && drush -y fra )
 
 
