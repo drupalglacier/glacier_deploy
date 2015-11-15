@@ -4,23 +4,6 @@ source _bootstrap.sh
 
 
 
-# Get settings from the script call.
-# e.g. ./build.sh --no-snapshot
-for i in "$@"
-do
-case $i in
-  -ns=*|--no-snapshot=*)
-  NO_SNAPSHOT="${i#*=}"
-  shift
-  ;;
-  *)
-  # unknown option
-  ;;
-esac
-done
-
-
-
 # Warn the user that features will be reverted.
 if [ "$ENVIRONMENT" == "dev" ]
 then
@@ -36,8 +19,8 @@ fi
 
 
 
-# Create a snaphsot of the current state if the "no snapshot" option isn't set.
-if [ -z "$NO_SNAPSHOT" ]
+# Create a snaphsot of the current state if the "-no-snapshot" option isn't set.
+if [ "$1" != "-no-snapshot" ];
 then
   ./snapshot.sh
 fi
