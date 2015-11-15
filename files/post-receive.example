@@ -1,0 +1,28 @@
+#!/bin/bash
+
+STAGING_DOCROOT="/var/www/PROJECT_NAME/staging"
+STAGING_WORKSPACE="$STAGING_DOCROOT/sites"
+STAGING_ENVIRONMENT_DIRECTORY="/PATH/TO/STAGING/ENVIRONMENT/DIRECTORY"
+
+PRODUCTION_DOCROOT="/var/www/PROJECT_NAME/production"
+PRODUCTION_WORKSPACE="$PRODUCTION_DOCROOT/sites"
+PRODUCTION_ENVIRONMENT_DIRECTORY="/PATH/TO/PRODUCTION/ENVIRONMENT/DIRECTORY"
+
+
+while read oldrev newrev refname
+do
+  BRANCH=$(git rev-parse --symbolic --abbrev-ref $refname)
+  if [ "$BRANCH" == "staging" ]
+  then
+    ( cd $STAGING_ENVIRONMENT_DIRECTORY && ./snapshot.sh )
+    ( cd $STAGING_WORKSPACE && git pull origin staging )
+    ( cd $STAGING_ENVIRONMENT_DIRECTORY && ./build.sh -no-snapshot )
+  fi
+
+  if [ "$BRANCH" == "production" ]
+  then
+    ( cd $PRODUCTION_ENVIRONMENT_DIRECTORY && ./snapshot.sh )
+    ( cd $PRODUCTION_WORKSPACE && git pull origin production )
+    ( cd $PRODUCTION_ENVIRONMENT_DIRECTORY && ./build.sh -no-snapshot )
+  fi
+done
