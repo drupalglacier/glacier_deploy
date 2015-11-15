@@ -15,13 +15,13 @@ FILE_NAME="${DATE_STRING}_${TIMESTAMP}"
 for i in "$@"
 do
 case $i in
-    -fn=*|--file-name=*)
-    FILE_NAME="${i#*=}"
-    shift
-    ;;
-    *)
-    # unknown option
-    ;;
+  -fn=*|--file-name=*)
+  FILE_NAME="${i#*=}"
+  shift
+  ;;
+  *)
+  # unknown option
+  ;;
 esac
 done
 
