@@ -33,7 +33,7 @@ fi
 FTP_URL="ftp://$FTP_USER:$FTP_PASS@$FTP_HOST"
 lftp -c "set ftp:list-options -a;
 open '$FTP_URL';
-lcd $LOCAL_DOCROOT;
+lcd $DOCROOT;
 cd $FTP_DOCROOT;
 mirror --reverse \
        --verbose \

@@ -30,25 +30,25 @@ fi
 # Enable the site maintenance mode (in none dev environments).
 if [ "$ENVIRONMENT" != "dev" ]
 then
-  ( cd $LOCAL_DOCROOT && drush -y vset maintenance_mode 1 )
+  ( cd $DOCROOT && drush -y vset maintenance_mode 1 )
 fi
 
 
 
 # Build the make file.
-( cd $LOCAL_DOCROOT && drush -y make $LOCAL_MAKE_FILE ./ )
+( cd $DOCROOT && drush -y make $MAKE_FILE ./ )
 
 
 
 # Apply any database updates required (as with running update.php).
-( cd $LOCAL_DOCROOT && drush -y updb )
+( cd $DOCROOT && drush -y updb )
 
 
 
 # Revert all enabled feature modules on your site.
-( cd $LOCAL_DOCROOT && drush -y fra )
+( cd $DOCROOT && drush -y fra )
 
 
 
 # Disable the site maintenance mode.
-( cd $LOCAL_DOCROOT && drush -y vset maintenance_mode 0 )
+( cd $DOCROOT && drush -y vset maintenance_mode 0 )
