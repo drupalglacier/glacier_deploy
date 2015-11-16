@@ -11,7 +11,7 @@ MAKE_FILE="$WORKSPACE/glacier.make"
 BACKUP_DIRECTORY="$ENVIRONMENT_DIRECTORY/backup"
 
 # FTP data.
-# (only needed if you plan to user deploy_ftp.sh).
+# (only needed if you plan to use deploy_ftp.sh).
 FTP_HOST=""
 FTP_USER=""
 FTP_PASS=""
