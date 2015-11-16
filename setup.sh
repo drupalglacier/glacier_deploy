@@ -21,14 +21,10 @@ ADMIN_BASE_THEME="shiny"
 
 
 # Get settings from the script call.
-# e.g. ./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1 --admin-base-theme=shiny
+# e.g. ./setup.sh --project-machine-name=project --project-human-readable-name=Project --account-mail=mail --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1 --admin-base-theme=shiny
 for i in "$@"
 do
 case $i in
-  -ed=*|--environment-directory=*)
-  ENVIRONMENT_DIRECTORY="${i#*=}"
-  shift
-  ;;
   -pmn=*|--project-machine-name=*)
   PROJECT_MACHINE_NAME="${i#*=}"
   shift
