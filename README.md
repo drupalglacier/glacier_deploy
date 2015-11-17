@@ -28,6 +28,12 @@ development environment, incorrect settings can cause serious issues.**
 Once everything is configured correctly, you can start the setup by running:
 `./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail@mail.com --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1`
 
+### snapshot.sh
+
+### build.sh
+
+### deploy_ftp.sh
+
 ## About
 Github: https://github.com/drupalglacier/glacier_deploy
 
