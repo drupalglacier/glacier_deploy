@@ -424,3 +424,22 @@ function DEPLOY_MODULE_install() {
   batch_set($batch);
   batch_process();
 }
+
+/**
+ * Disable modules only needed for development on non dev environments.
+ */
+function DEPLOY_MODULE_update_7100(&$sandbox) {
+  if (variable_get('environment', 'dev') != 'dev') {
+    $modules = array();
+    $modules[] = 'module_filter';
+    $modules[] = 'dblog';
+    $modules[] = 'field_ui';
+    $modules[] = 'update';
+    $modules[] = 'devel';
+    $modules[] = 'search_krumo';
+    $modules[] = 'ds_ui';
+    $modules[] = 'views_ui';
+
+    module_disable($modules);
+  }
+}
