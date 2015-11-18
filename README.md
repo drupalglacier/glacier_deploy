@@ -3,7 +3,7 @@ glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
 ## Usage
-To run shell scripts open your command line interface and type `./snapshot.sh`.
+Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
 [Read more about shell scripts on Wikipedia.](https://en.wikipedia.org/wiki/Shell_script)
 
 ### setup.sh
