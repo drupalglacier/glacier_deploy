@@ -1,4 +1,9 @@
 #!/bin/bash
+# Unset the GIT_DIR variable so it is possible
+# to pull origin into the deployment repository.
+unset GIT_DIR
+
+
 
 STAGING_DOCROOT="/var/www/PROJECT_NAME/staging"
 STAGING_WORKSPACE="$STAGING_DOCROOT/sites"
@@ -7,6 +12,7 @@ STAGING_GLACIER_DEPLOY_DIRECTORY="/PATH/TO/STAGING/GLACIER/DEPLOY/DIRECTORY"
 PRODUCTION_DOCROOT="/var/www/PROJECT_NAME/production"
 PRODUCTION_WORKSPACE="$PRODUCTION_DOCROOT/sites"
 PRODUCTION_GLACIER_DEPLOY_DIRECTORY="/PATH/TO/PRODUCTION/GLACIER/DEPLOY/DIRECTORY"
+
 
 
 while read oldrev newrev refname
