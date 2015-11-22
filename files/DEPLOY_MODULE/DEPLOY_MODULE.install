@@ -149,9 +149,7 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'globalredirect';
 
   // Performance and scalability.
-  // Follow the instructions (https://www.drupal.org/project/apdqc)
-  // before enabling the "apdqc" module.
-  // $modules[] = 'apdqc';
+  $modules[] = 'apdqc';
   $modules[] = 'minify';
 
   // Picture.
