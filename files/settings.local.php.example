@@ -17,3 +17,7 @@ $databases = array(
 $drupal_hash_salt = 'RANDOM_STRING_PLACEHOLDER';
 
 $conf['environment'] = 'ENVIRONMENT_PLACEHOLDER';
+
+if ($conf['environment'] == 'dev') {
+  $conf['theme_debug'] = TRUE;
+}
