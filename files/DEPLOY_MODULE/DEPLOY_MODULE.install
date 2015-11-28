@@ -54,6 +54,7 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'number';
   $modules[] = 'options';
   $modules[] = 'path';
+  $modules[] = 'syslog';
   $modules[] = 'system';
   $modules[] = 'taxonomy';
   $modules[] = 'text';
