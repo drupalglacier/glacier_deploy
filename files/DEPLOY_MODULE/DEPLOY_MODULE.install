@@ -440,5 +440,6 @@ function DEPLOY_MODULE_update_7100(&$sandbox) {
     $modules[] = 'views_ui';
 
     module_disable($modules);
+    drupal_uninstall_modules($modules);
   }
 }
