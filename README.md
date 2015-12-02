@@ -2,6 +2,9 @@
 glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
+## Setup
+coming soon ™
+
 ## Usage
 Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
 [Read more about shell scripts on Wikipedia.](https://en.wikipedia.org/wiki/Shell_script)
@@ -29,10 +32,28 @@ Once everything is configured correctly, you can start the setup by running:
 `./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail@mail.com --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1`
 
 ### snapshot.sh
+Create a backup of your code, files and database. The `snapshot.sh` script is a
+wrapper around `drush archive-dump`. The script creates a tar.gz file in your
+backup directory (specified in your `config.cfg` file) with the current date and
+timestamp as file name. If you want to specify a custom file name, you can do so
+with the `file-name` option (e.g. `./snapshot.sh --file-name=customfilename`).
 
 ### build.sh
+Use the `build.sh` script to run all steps necessary to build your Drupal
+system after you made changes to features or the make file. Running `./build.sh`
+creates a snapshot of the current state (you can prevent this by adding the
+`-no-snapshot` option), puts your site in maintenance mode (except on the dev
+environment), builds the make file, updates the database (`drush updatedb`) and
+reverts all features (`drush features-revert-all`).
 
 ### deploy_ftp.sh
+If it is not possible to use Git for deployment (e.g. on cheap shared hosting),
+you can use the `deploy_ftp.sh` script to deploy via a FTP connection. The
+script uses the [LFTP](http://lftp.yar.ru/) commmand line tool to mirror the
+complete docroot of your project to the FTP server spcified in your
+`config.cfg`. Keep in mind that deploying to an FTP server takes much more time
+than using Git. Furthermore you must run the commands from `build.sh` manually
+after FTP deployment. Don't forget to bill you client the extra time.
 
 ## About
 Github: https://github.com/drupalglacier/glacier_deploy
