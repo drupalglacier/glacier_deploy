@@ -3,36 +3,41 @@ glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
 ## Get started
-1. Download or clone `glacier_deploy` and copy it to your desired directory.
-   Usually you should end up with a directory structure like this:
-   ```
-   .
-   ├── docroot
-   |   └── your_website_data
-   ├── environment
-   └── glacier_deploy
-   ```
-   You can define the path to your docroot in the config.cfg. It is required
-   that the `glacier_deploy` and `environment` directory are on the same level.
-   Furthermore it is highly recommended that both the `glacier_deploy` and the
-   `environment` directory are not accessible from the web.
-2. By default the `setup.sh` script copies the example configuration files
-   (`config.cfg.example` and `settings.local.php.example`) to your `environment`
-   directory and uses those for the setup process. But usually you want to make
-   changes to those files to meet the conditions of your development
-   environment. To do so, manually copie those files from `glacier_deploy/files`
-   to your `environment` directory (remove the `.example` ending) and change the
-   files to fulfill your needs.
-   ```
-   .
-   ├── docroot
-   ├── environment
-   |   ├── config.cfg
-   |   └── settings.local.php
-   └── glacier_deploy
-   ```
-   **The settings in the `config.cfg` file must match the specifications of your
-   development environment, incorrect settings can cause serious issues.**
+Download or clone `glacier_deploy` and copy it to your desired directory. Create
+a directory structure like this:
+
+```
+.
+├── docroot
+|   └── your_website_data
+├── environment
+└── glacier_deploy
+```
+
+You can define the path to your docroot in the config.cfg. It is required that
+the `glacier_deploy` and `environment` directory are on the same level.
+Furthermore it is highly recommended that both the `glacier_deploy` and the
+`environment` directory are not accessible from the web.
+
+By default the `setup.sh` script copies the example configuration files
+(`config.cfg.example` and `settings.local.php.example`) to your `environment`
+directory and uses those for the setup process. But usually you want to make
+changes to those files to meet the conditions of your development environment.
+To do so, manually copie those files from `glacier_deploy/files` to your
+`environment` directory (remove the `.example` ending) and change the files to
+fulfill your needs.
+
+```
+.
+├── docroot
+├── environment
+|   ├── config.cfg
+|   └── settings.local.php
+└── glacier_deploy
+```
+
+**The settings in the `config.cfg` file must match the specifications of your
+development environment, incorrect settings can cause serious issues.**
 
 ## Usage
 Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
