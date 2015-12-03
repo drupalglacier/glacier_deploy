@@ -52,7 +52,7 @@ Before starting the setup script you must check whether the data in the
 `config.cfg.example` file are compatible with your development environment.
 
 Once everything is configured correctly, you can start the setup by running:
-`./setup.sh --environment-directory=/path/to/envirnonment --project-machine-name=project --project-human-readable-name=Project --account-mail=mail@mail.com --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1`
+`./setup.sh --project-machine-name=project --project-human-readable-name=Project --account-mail=mail@mail.com --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1`
 
 ### snapshot.sh
 Create a backup of your code, files and database. The `snapshot.sh` script is a
