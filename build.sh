@@ -19,7 +19,7 @@ fi
 
 
 
-# Create a snaphsot of the current state if the "-no-snapshot" option isn't set.
+# Create a snaphsot of the current state (if the "-no-snapshot" option isn't set).
 if [ "$1" != "-no-snapshot" ]
 then
   ./snapshot.sh
