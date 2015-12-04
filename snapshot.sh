@@ -27,5 +27,5 @@ done
 
 
 
-( cd $DOCROOT && drush -y cc all )
-( cd $DOCROOT && drush -y ard --destination="$BACKUP_DIRECTORY/$FILE_NAME.tar.gz" )
+( cd "$DOCROOT" && drush -y cc all )
+( cd "$DOCROOT" && drush -y ard --destination="$BACKUP_DIRECTORY/$FILE_NAME.tar.gz" )

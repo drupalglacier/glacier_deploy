@@ -21,7 +21,7 @@ NC='\033[0m'
 # Set the path to the environment directory and
 # load the config file if available.
 ENVIRONMENT_DIRECTORY="$(dirname "$BASEDIR")/environment"
-if [ -f $ENVIRONMENT_DIRECTORY/config.cfg ]
+if [ -f "$ENVIRONMENT_DIRECTORY/config.cfg" ]
 then
-  source $ENVIRONMENT_DIRECTORY/config.cfg
+  source "$ENVIRONMENT_DIRECTORY/config.cfg"
 fi
