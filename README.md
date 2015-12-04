@@ -22,22 +22,25 @@ Furthermore it is highly recommended that both the `glacier_deploy` and the
 By default the `setup.sh` script copies the example configuration files
 (`config.cfg.example` and `settings.local.php.example`) to your `environment`
 directory and uses those for the setup process. But usually you want to make
-changes to those files to meet the conditions of your development environment.
-To do so, manually copie those files from `glacier_deploy/files` to your
-`environment` directory (remove the `.example` ending) and change the files to
-fulfill your needs.
+changes to the `config.cfg` file to meet the conditions of your development
+environment. To do so, manually copy the file from `glacier_deploy/files` to
+your `environment` directory (remove the `.example` ending) and change the
+settings to fulfill your needs.
 
 ```
 .
 ├── docroot
 ├── environment
-|   ├── config.cfg
-|   └── settings.local.php
+|   └── config.cfg
 └── glacier_deploy
 ```
 
 **The settings in the `config.cfg` file must match the specifications of your
 development environment, incorrect settings can cause serious issues.**
+
+If you want to make changes to the `settings.local.php` file, it is better to
+let the `setup.sh` script create the file and make changes to it after the
+installation is complete.
 
 ## Usage
 Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
