@@ -82,9 +82,13 @@ done
 
 
 # Setup the basic environment.
-if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
+if [ ! -d $ENVIRONMENT_DIRECTORY ]
 then
   mkdir -p $ENVIRONMENT_DIRECTORY
+fi
+
+if [ ! -f $ENVIRONMENT_DIRECTORY/config.cfg ]
+then
   cp files/config.cfg.example $ENVIRONMENT_DIRECTORY/config.cfg
 
   # Replace project machine name placeholder string.
