@@ -182,6 +182,7 @@ fi
 
 # Theme configuration.
 ( cd "$DOCROOT" && drush -y en glacier )
+( cd "$DOCROOT" && drush -y vset theme_default glacier )
 ( cd "$DOCROOT" && drush cc all )
 ( cd "$DOCROOT" && drush -y glacier "$PROJECT_MACHINE_NAME" )
 mkdir -p "$WORKSPACE/all/themes/custom"
