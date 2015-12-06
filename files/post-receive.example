@@ -20,15 +20,15 @@ do
   BRANCH=$(git rev-parse --symbolic --abbrev-ref $refname)
   if [ "$BRANCH" == "staging" ]
   then
-    ( cd $STAGING_GLACIER_DEPLOY_DIRECTORY && ./snapshot.sh )
-    ( cd $STAGING_WORKSPACE && git pull origin staging )
-    ( cd $STAGING_GLACIER_DEPLOY_DIRECTORY && ./build.sh -no-snapshot )
+    ( cd "$STAGING_GLACIER_DEPLOY_DIRECTORY" && ./snapshot.sh )
+    ( cd "$STAGING_WORKSPACE" && git pull origin staging )
+    ( cd "$STAGING_GLACIER_DEPLOY_DIRECTORY" && ./build.sh -no-snapshot )
   fi
 
   if [ "$BRANCH" == "production" ]
   then
-    ( cd $PRODUCTION_GLACIER_DEPLOY_DIRECTORY && ./snapshot.sh )
-    ( cd $PRODUCTION_WORKSPACE && git pull origin production )
-    ( cd $PRODUCTION_GLACIER_DEPLOY_DIRECTORY && ./build.sh -no-snapshot )
+    ( cd "$PRODUCTION_GLACIER_DEPLOY_DIRECTORY" && ./snapshot.sh )
+    ( cd "$PRODUCTION_WORKSPACE" && git pull origin production )
+    ( cd "$PRODUCTION_GLACIER_DEPLOY_DIRECTORY" && ./build.sh -no-snapshot )
   fi
 done
