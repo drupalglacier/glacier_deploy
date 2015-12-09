@@ -225,14 +225,6 @@ projects[image_progressive_effect][subdir] = "external"
 
 
 
-; Features
-projects[glacier_system][download][type] = "get"
-projects[glacier_system][download][url] = "https://github.com/drupalglacier/glacier_system/archive/7.x-1.x-dev.zip"
-projects[glacier_system][type] = "module"
-projects[glacier_system][subdir] = "features"
-
-
-
 ; Themes (contrib)
 projects[shiny][subdir] = "contrib"
 

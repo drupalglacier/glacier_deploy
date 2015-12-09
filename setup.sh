@@ -137,6 +137,13 @@ drush -y make "$MAKE_FILE" "$DOCROOT/tmp"
 rsync -av "$DOCROOT/tmp/" "$DOCROOT"
 rm -Rf "$DOCROOT/tmp"
 
+if [ ! -f "$MAKE_FILE_FEATURES" ]
+then
+  cp files/glacier.features.make.example "$MAKE_FILE_FEATURES"
+fi
+
+( cd $DOCROOT && drush -y make $MAKE_FILE_FEATURES ./ --no-core )
+
 
 
 # Install Drupal.
