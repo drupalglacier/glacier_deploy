@@ -127,9 +127,13 @@ fi
 
 
 # Build the make file.
+if [ ! -d "$WORKSPACE" ]
+then
+  mkdir -p "$WORKSPACE"
+fi
+
 if [ ! -f "$MAKE_FILE" ]
 then
-  mkdir -p "$WORKSPACE/all"
   cp files/glacier.make.example "$MAKE_FILE"
 fi
 
