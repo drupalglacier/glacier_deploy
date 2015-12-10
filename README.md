@@ -47,7 +47,7 @@ installation is complete.
 There are two Makefiles which are used to build the Drupal base system.
 Usually it is fine to use the default files. The `setup.sh` script will create
 a copy of the example Makefiles (`glacier.make.example` and
-`glacier.features.make.example`) in your `sites directory and install the Drupal
+`glacier.features.make.example`) in your `sites` directory and install the Drupal
 base system accordingly. You will use the default Makefile `glacier.make` to
 install new modules, themes, libraries and patches during your project workflow.
 The `build.sh` script will use this Makefile to implement your changes accross
