@@ -3,6 +3,7 @@ glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
 ## Get started
+### Basic configuration
 Download or clone `glacier_deploy` and copy it to your desired directory. Create
 a directory structure like this:
 
@@ -42,6 +43,25 @@ If you want to make changes to the `settings.local.php` file, it is better to
 let the `setup.sh` script create the file and make changes to it after the
 installation is complete.
 
+### Makefiles
+There are two Makefiles which are used to build the Drupal base system.
+Usually it is fine to use the default files. The `setup.sh` script will create
+a copy of the example Makefiles (`glacier.make.example` and
+`glacier.features.make.example`) in your `sites directory and install the Drupal
+base system accordingly. You will use the default Makefile `glacier.make` to
+install new modules, themes, libraries and patches during your project workflow.
+The `build.sh` script will use this Makefile to implement your changes accross
+your environments. The features Makefile `glacier.features.make` will only be
+used during the setup process. This is because it is expected, that you make
+changes to your features and those changes are tracked via Git. Defining your
+features in the default Makefile would result in overwriting them when running
+`build.sh`. If you do not make changes to certain features and you want to
+update them from a global repository, you should add those to the default
+Makefile and add them to `.gitignore`. If you want to make changes to the
+Makefiles before the initial setup, create a copy of the example Makefiles in
+`glacier_deploy/files` (remove the `.example` ending) and move them to a new
+directory `sites` in the docroot of your project.
+
 ## Usage
 Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
 [Read more about shell scripts on Wikipedia.](https://en.wikipedia.org/wiki/Shell_script)
@@ -66,10 +86,10 @@ with the `file-name` option (e.g. `./snapshot.sh --file-name=customfilename`).
 
 ### build.sh
 Use the `build.sh` script to run all steps necessary to build your Drupal
-system after you made changes to features or the make file. Running `./build.sh`
+system after you made changes to features or the Makefile. Running `./build.sh`
 creates a snapshot of the current state (you can prevent this by adding the
 `-no-snapshot` option), puts your site in maintenance mode (except on the dev
-environment), builds the make file, updates the database (`drush updatedb`) and
+environment), builds the Makefile, updates the database (`drush updatedb`) and
 reverts all features (`drush features-revert-all`).
 
 ### deploy_ftp.sh
