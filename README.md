@@ -2,7 +2,22 @@
 glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
-## Get started
+## Quick start
+1. Download or clone glacier Deploy
+2. Move `glacier_deploy` to your project directory
+3. Create a directory named `environment` in the same directory as
+`glacier_deploy`
+4. Copy the `config.cfg.example` file from `glacier_deploy/files` to your
+environment directory (remove the `.example` ending)
+5. Make changes to the `config.cfg` file (most notably the `DOCROOT` setting)
+6. Run `./setup.sh` (with all required parameters) inside the `glacier_deploy`
+directory
+7. Add the `post-receive.example` Git hook to your Git repository configuration
+on your live server(s) (remove the `.example` ending)
+8. Change the settings in the `post-receive` Git hook according to your setup
+9. Push the `staging` or `production` branch to the live server
+
+## Usage
 ### Basic configuration
 Download or clone `glacier_deploy` and copy it to your desired directory. Create
 a directory structure like this:
@@ -62,7 +77,7 @@ Makefiles before the initial setup, create a copy of the example Makefiles in
 `glacier_deploy/files` (remove the `.example` ending) and move them to a new
 directory `sites` in the docroot of your project.
 
-## Usage
+## Scripts
 Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
 [Read more about shell scripts on Wikipedia.](https://en.wikipedia.org/wiki/Shell_script)
 
