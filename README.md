@@ -19,7 +19,7 @@ on your live server(s) (remove the `.example` ending)
 
 ## Usage
 ### Basic configuration
-Download or clone `glacier_deploy` and copy it to your desired directory. Create
+Download or clone glacier Deploy and move it to your desired directory. Create
 a directory structure like this:
 
 ```
