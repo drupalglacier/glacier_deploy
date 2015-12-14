@@ -54,24 +54,24 @@ settings to fulfill your needs.
 **The settings in the `config.cfg` file must match the specifications of your
 development environment, incorrect settings can cause serious issues.**
 
-If you want to make changes to the `settings.local.php` file, it is better to
-let the `setup.sh` script create the file and make changes to it after the
+If you want to make changes to the `settings.local.php` file, it is recommended
+to let the `setup.sh` script create the file and make changes to it after the
 installation is complete.
 
 ### Makefiles
 There are two Makefiles which are used to build the Drupal base system.
 Usually it is fine to use the default files. The `setup.sh` script will create
 a copy of the example Makefiles (`glacier.make.example` and
-`glacier.features.make.example`) in your `sites` directory and install the Drupal
-base system accordingly. You will use the default Makefile `glacier.make` to
-install new modules, themes, libraries and patches during your project workflow.
-The `build.sh` script will use this Makefile to implement your changes accross
-your environments. The features Makefile `glacier.features.make` will only be
-used during the setup process. This is because it is expected, that you make
-changes to your features and those changes are tracked via Git. Defining your
-features in the default Makefile would result in overwriting them when running
-`build.sh`. If you do not make changes to certain features and you want to
-update them from a global repository, you should add those to the default
+`glacier.features.make.example`) in your `sites` directory and install the
+Drupal base system accordingly. You will use the default Makefile `glacier.make`
+to install new modules, themes, libraries and patches during your project
+workflow. The `build.sh` script will use this Makefile to implement your changes
+accross your environments. The features Makefile `glacier.features.make` will
+only be used during the setup process. This is because it is expected, that you
+make changes to your features and those changes are tracked via Git. Defining
+your features in the default Makefile would result in overwriting them when
+running `build.sh`. If you do not make changes to certain features and you want
+to update them from a global repository, you should add those to the default
 Makefile and add them to `.gitignore`. If you want to make changes to the
 Makefiles before the initial setup, create a copy of the example Makefiles in
 `glacier_deploy/files` (remove the `.example` ending) and move them to a new
@@ -115,6 +115,23 @@ complete docroot of your project to the FTP server spcified in your
 `config.cfg`. Keep in mind that deploying to an FTP server takes much more time
 than using Git. Furthermore you must run the commands from `build.sh` manually
 after FTP deployment. Don't forget to bill you client the extra time.
+
+## Drupal workflow
+### Subfolder structure
+According to best practices, glacier Deploy uses separate sub folders for
+contrib modules, custom modules and features. Additionally there is a `external`
+directory for modules and themes which are third party code but not from
+drupal.org. Usually modules and themes in `external` are managed by a version
+control system (e.g. on GitHub). To keep your codebase clean, external modules
+and themes are not tracked in your projects Git repository.
+
+```
+.
+├── contrib
+├── custom
+├── external
+└── features
+```
 
 ## About
 Github: https://github.com/drupalglacier/glacier_deploy
