@@ -7,7 +7,6 @@ based Drupal development workflow.
 - Webserver (PHP, MySQL,..)
 - [Drush](https://www.drupal.org/project/drush)
 - [Git](https://git-scm.com/)
-- *[LFTP](http://lftp.yar.ru/) commmand line tool* (only FTP deployment)
 
 ## Quick start
 1. Download or clone glacier Deploy
