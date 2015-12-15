@@ -2,6 +2,13 @@
 glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
+## Requirements
+- Bash Shell
+- Webserver (PHP, MySQL,..)
+- [Drush](https://www.drupal.org/project/drush)
+- [Git](https://git-scm.com/)
+- *[LFTP](http://lftp.yar.ru/) commmand line tool* (only FTP deployment)
+
 ## Quick start
 1. Download or clone glacier Deploy
 2. Move `glacier_deploy` to your project directory
