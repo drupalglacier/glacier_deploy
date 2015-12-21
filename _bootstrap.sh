@@ -2,6 +2,10 @@
 # Commands which fail will cause the shell script to exit immediately.
 set -e
 
+# Make bash include filenames beginning with a '.'
+# in the results of pathname expansion.
+shopt -s dotglob
+
 
 
 # Get the path to the glacier deploy base directory.
