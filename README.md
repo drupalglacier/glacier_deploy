@@ -109,9 +109,9 @@ with the `file-name` option (e.g. `./snapshot.sh --file-name=customfilename`).
 Restore snapshots created with `snapshot.sh`. The `rollback.sh` script is a
 wrapper around `drush archive-restore`. By default the script restores the
 latest snapshot. If you want to restore a specific snapshot, you can do so
-with the `file-name` option (e.g. `./snapshot.sh --file-name=customfilename`) or
+with the `file-name` option (e.g. `./rollback.sh --file-name=customfilename`) or
 by providing the timestamp of the snapshot you want to restore
-(e.g. `./snapshot.sh --snapshot-timestamp=1447516767`). To prevent data loss
+(e.g. `./rollback.sh --snapshot-timestamp=1447516767`). To prevent data loss
 `rollback.sh` creates a snapshot with the name "beforerollback" in your backup
 directory (you can prevent this by adding the `-no-snapshot` option).
 
