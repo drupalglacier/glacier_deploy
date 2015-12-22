@@ -4,6 +4,28 @@
  * DEPLOY_MODULE helper module code.
  */
 
+/**
+ * Implements hook_init().
+ */
+function DEPLOY_MODULE_init() {
+  if (variable_get('environment', 'production') == 'dev') {
+    // Check the permissions and attempt to fix them, if fixing them
+    // automatically is not possible, a warning message is displayed.
+    $default_dir_path = DRUPAL_ROOT . '/sites/default';
+    $default_dir_permissions = substr(sprintf('%o', fileperms($default_dir_path)), -4);
+    // Check and attempt to fix default folder permissions.
+    if ($default_dir_permissions !== '0755' && !chmod($default_dir_path, 0755)) {
+      drupal_set_message(t('Change the permissions of "@path" to "0755" to prevent problems with VCS.', array('@path' => $default_dir_path)), 'warning');
+    }
+    $settings_path = DRUPAL_ROOT . '/sites/default/settings.php';
+    $settings_permissions = substr(sprintf('%o', fileperms($settings_path)), -4);
+    // Check and attempt to fix settings.php permissions.
+    if ($settings_permissions !== '0777' && !chmod($settings_path, 0777)) {
+      drupal_set_message(t('Change the permissions of "@path" to "0755" to prevent problems with VCS.', array('@path' => $settings_path)), 'warning');
+    }
+  }
+}
+
 function _DEPLOY_MODULE_batch_enable_module($module, &$context) {
   module_enable(array($module), TRUE);
   $context['results']['processed']++;
