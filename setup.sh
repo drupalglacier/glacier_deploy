@@ -128,7 +128,10 @@ fi
 
 # Create a composer project.
 composer create-project drupal/drupal "$DOCROOT" 8.0.1
-cp files/composer.json.example "$COMPOSER_FILE"
+if [ ! -f "$COMPOSER_FILE" ]
+then
+  cp files/composer.json.example "$COMPOSER_FILE"
+fi
 ( cd $WORKSPACE && composer update )
 # INFO: Setup breaks here because of https://www.drupal.org/node/2629772 Drupal 8.0.2 should fix the problem.
 # TODO: download features
