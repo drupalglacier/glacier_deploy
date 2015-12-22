@@ -20,8 +20,8 @@ function DEPLOY_MODULE_init() {
     $settings_path = DRUPAL_ROOT . '/sites/default/settings.php';
     $settings_permissions = substr(sprintf('%o', fileperms($settings_path)), -4);
     // Check and attempt to fix settings.php permissions.
-    if ($settings_permissions !== '0777' && !chmod($settings_path, 0777)) {
-      drupal_set_message(t('Change the permissions of "@path" to "0755" to prevent problems with VCS.', array('@path' => $settings_path)), 'warning');
+    if ($settings_permissions !== '0644' && !chmod($settings_path, 0644)) {
+      drupal_set_message(t('Change the permissions of "@path" to "0644" to prevent problems with VCS.', array('@path' => $settings_path)), 'warning');
     }
   }
 }
