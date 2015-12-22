@@ -25,7 +25,8 @@
   "prefer-stable": true,
   "config": {
     "preferred-install": "dist",
-    "autoloader-suffix": "Drupal8"
+    "autoloader-suffix": "Drupal8",
+    "vendor-dir": "../vendor"
   },
   "extra": {
     "_readme": [
@@ -33,14 +34,14 @@
       "To change the autoloader you can edit ./autoload.php."
     ],
     "installer-paths": {
-      "core": ["type:drupal-core"],
-      "modules/contrib/{$name}": ["type:drupal-module"],
-      "profiles/contrib/{$name}": ["type:drupal-profile"],
-      "themes/contrib/{$name}": ["type:drupal-theme"]
+      "../core": ["type:drupal-core"],
+      "../modules/contrib/{$name}": ["type:drupal-module"],
+      "../profiles/contrib/{$name}": ["type:drupal-profile"],
+      "../themes/contrib/{$name}": ["type:drupal-theme"]
     },
     "merge-plugin": {
       "include": [
-        "core/composer.json"
+        "../core/composer.json"
       ],
       "recurse": false,
       "replace": false,
@@ -49,7 +50,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer"
+      "Drupal\\Core\\Composer\\": "../core/lib/Drupal/Core/Composer"
     }
   },
   "scripts": {

@@ -129,7 +129,7 @@ fi
 # Create a composer project.
 composer create-project drupal/drupal "$DOCROOT" 8.0.1
 cp files/composer.json.example "$COMPOSER_FILE"
-( cd $DOCROOT && composer update )
+( cd $WORKSPACE && composer update )
 # TODO: download features
 
 
@@ -166,33 +166,32 @@ cp files/composer.json.example "$COMPOSER_FILE"
 # with a modified version.
 chmod 755 "$WORKSPACE/default"
 chmod 777 "$WORKSPACE/default/settings.php"
-rm -f "$WORKSPACE/default/settings.php"
-cp files/settings.php.example "$WORKSPACE/default/settings.php"
-# TODO: check if there are VCS problems with services and default settings file
+# rm -f "$WORKSPACE/default/settings.php"
+# cp files/settings.php.example "$WORKSPACE/default/settings.php"
 
-# Replace placeholder strings in the main settings file.
-sed -i -e "s#PATH_TO_LOCAL_SETTINGS_PLACEHOLDER#$ENVIRONMENT_DIRECTORY/settings.local.php#g" "$WORKSPACE/default/settings.php"
+# # Replace placeholder strings in the main settings file.
+# sed -i -e "s#PATH_TO_LOCAL_SETTINGS_PLACEHOLDER#$ENVIRONMENT_DIRECTORY/settings.local.php#g" "$WORKSPACE/default/settings.php"
 
-if [ ! -f "$ENVIRONMENT_DIRECTORY/settings.local.php" ]
-then
-  cp files/settings.local.php.example "$ENVIRONMENT_DIRECTORY/settings.local.php"
+# if [ ! -f "$ENVIRONMENT_DIRECTORY/settings.local.php" ]
+# then
+#   cp files/settings.local.php.example "$ENVIRONMENT_DIRECTORY/settings.local.php"
 
-  # Replace database credentials placeholder strings.
-  sed -i -e "s#DATABASE_PLACEHOLDER#$DATABASE#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-  sed -i -e "s#DATABASE_USERNAME_PLACEHOLDER#$DATABASE_USERNAME#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-  sed -i -e "s#DATABASE_PASSWORD_PLACEHOLDER#$DATABASE_PASSWORD#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-  sed -i -e "s#DATABASE_HOST_PLACEHOLDER#$DATABASE_HOST#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-  sed -i -e "s#DATABASE_PORT_PLACEHOLDER#$DATABASE_PORT#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-  sed -i -e "s#DATABASE_DRIVER_PLACEHOLDER#$DATABASE_DRIVER#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-  sed -i -e "s#DATABASE_PREFIX_PLACEHOLDER#$DATABASE_PREFIX#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   # Replace database credentials placeholder strings.
+#   sed -i -e "s#DATABASE_PLACEHOLDER#$DATABASE#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   sed -i -e "s#DATABASE_USERNAME_PLACEHOLDER#$DATABASE_USERNAME#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   sed -i -e "s#DATABASE_PASSWORD_PLACEHOLDER#$DATABASE_PASSWORD#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   sed -i -e "s#DATABASE_HOST_PLACEHOLDER#$DATABASE_HOST#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   sed -i -e "s#DATABASE_PORT_PLACEHOLDER#$DATABASE_PORT#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   sed -i -e "s#DATABASE_DRIVER_PLACEHOLDER#$DATABASE_DRIVER#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   sed -i -e "s#DATABASE_PREFIX_PLACEHOLDER#$DATABASE_PREFIX#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
 
-  # Generate a random string to use as hash salt in the settings.local.php.
-  RANDOM_STRING=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-  sed -i -e "s#RANDOM_STRING_PLACEHOLDER#$RANDOM_STRING#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+#   # Generate a random string to use as hash salt in the settings.local.php.
+#   RANDOM_STRING=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+#   sed -i -e "s#RANDOM_STRING_PLACEHOLDER#$RANDOM_STRING#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
 
-  # Replace environment setting placeholder string.
-  sed -i -e "s#ENVIRONMENT_PLACEHOLDER#$ENVIRONMENT#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
-fi
+#   # Replace environment setting placeholder string.
+#   sed -i -e "s#ENVIRONMENT_PLACEHOLDER#$ENVIRONMENT#g" "$ENVIRONMENT_DIRECTORY/settings.local.php"
+# fi
 
 
 
@@ -242,21 +241,21 @@ fi
 
 
 
-# Setup git.
-if [ ! -f "$WORKSPACE/.gitignore" ]
-then
-  # Add a .gitignore file to the workspace.
-  cp files/.gitignore.example "$WORKSPACE/.gitignore"
-fi
+# # Setup git.
+# if [ ! -f "$WORKSPACE/.gitignore" ]
+# then
+#   # Add a .gitignore file to the workspace.
+#   cp files/.gitignore.example "$WORKSPACE/.gitignore"
+# fi
 
-( cd "$WORKSPACE" && git init )
-( cd "$WORKSPACE" && git add --all )
-( cd "$WORKSPACE" && git commit -m "initial commit" )
-( cd "$WORKSPACE" && git branch staging )
-( cd "$WORKSPACE" && git branch production )
-( cd "$WORKSPACE" && git checkout -b dev )
-( cd "$WORKSPACE" && git branch -d master )
-( cd "$WORKSPACE" && git remote add origin "$REPOSITORY" )
+# ( cd "$WORKSPACE" && git init )
+# ( cd "$WORKSPACE" && git add --all )
+# ( cd "$WORKSPACE" && git commit -m "initial commit" )
+# ( cd "$WORKSPACE" && git branch staging )
+# ( cd "$WORKSPACE" && git branch production )
+# ( cd "$WORKSPACE" && git checkout -b dev )
+# ( cd "$WORKSPACE" && git branch -d master )
+# ( cd "$WORKSPACE" && git remote add origin "$REPOSITORY" )
 
 
 
