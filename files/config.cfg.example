@@ -6,9 +6,10 @@ REPOSITORY="git@github.com:PROJECT_MACHINE_NAME_PLACEHOLDER/PROJECT_MACHINE_NAME
 
 # Directories.
 DOCROOT="/var/www/devbox/PROJECT_MACHINE_NAME_PLACEHOLDER"
-WORKSPACE="$DOCROOT/sites"
-MAKE_FILE="$WORKSPACE/glacier.make"
-MAKE_FILE_FEATURES="$WORKSPACE/glacier.features.make"
+COMPOSER_FILE="$DOCROOT/composer.json"
+WORKSPACE="$DOCROOT/sites" # TODO: workspace dir is same as docroot??
+MAKE_FILE="$WORKSPACE/glacier.make" # TODO: change to composer.json
+MAKE_FILE_FEATURES="$WORKSPACE/glacier.features.make" # TODO: find replacement
 BACKUP_DIRECTORY="$ENVIRONMENT_DIRECTORY/backup"
 
 # FTP data.

@@ -16,7 +16,7 @@ DATABASE_HOST="127.0.0.1"
 DATABASE_PORT=""
 DATABASE_DRIVER="mysql"
 DATABASE_PREFIX=""
-ADMIN_BASE_THEME="shiny"
+ADMIN_BASE_THEME="seven"
 
 
 
@@ -126,27 +126,34 @@ fi
 
 
 
+# Create a composer project.
+composer create-project drupal/drupal "$DOCROOT" 8.0.1
+cp files/composer.json.example "$COMPOSER_FILE"
+( cd $DOCROOT && composer update )
+# TODO: download features
+
+
 # Build the make file.
-if [ ! -d "$WORKSPACE" ]
-then
-  mkdir -p "$WORKSPACE"
-fi
-
-if [ ! -f "$MAKE_FILE" ]
-then
-  cp files/glacier.make.example "$MAKE_FILE"
-fi
-
-drush -y make "$MAKE_FILE" "$DOCROOT/tmp"
-rsync -av "$DOCROOT/tmp/" "$DOCROOT"
-rm -Rf "$DOCROOT/tmp"
-
-if [ ! -f "$MAKE_FILE_FEATURES" ]
-then
-  cp files/glacier.features.make.example "$MAKE_FILE_FEATURES"
-fi
-
-( cd $DOCROOT && drush -y make $MAKE_FILE_FEATURES ./ --no-core )
+# if [ ! -d "$WORKSPACE" ]
+# then
+#   mkdir -p "$WORKSPACE"
+# fi
+#
+# if [ ! -f "$MAKE_FILE" ]
+# then
+#   cp files/glacier.make.example "$MAKE_FILE"
+# fi
+#
+# drush -y make "$MAKE_FILE" "$DOCROOT/tmp"
+# rsync -av "$DOCROOT/tmp/" "$DOCROOT"
+# rm -Rf "$DOCROOT/tmp"
+#
+# if [ ! -f "$MAKE_FILE_FEATURES" ]
+# then
+#   cp files/glacier.features.make.example "$MAKE_FILE_FEATURES"
+# fi
+#
+# ( cd $DOCROOT && drush -y make $MAKE_FILE_FEATURES ./ --no-core )
 
 
 
@@ -161,6 +168,7 @@ chmod 755 "$WORKSPACE/default"
 chmod 777 "$WORKSPACE/default/settings.php"
 rm -f "$WORKSPACE/default/settings.php"
 cp files/settings.php.example "$WORKSPACE/default/settings.php"
+# TODO: check if there are VCS problems with services and default settings file
 
 # Replace placeholder strings in the main settings file.
 sed -i -e "s#PATH_TO_LOCAL_SETTINGS_PLACEHOLDER#$ENVIRONMENT_DIRECTORY/settings.local.php#g" "$WORKSPACE/default/settings.php"
@@ -188,48 +196,48 @@ fi
 
 
 
-# Theme configuration.
-( cd "$DOCROOT" && drush -y en glacier )
-( cd "$DOCROOT" && drush -y vset theme_default glacier )
-( cd "$DOCROOT" && drush cc all )
-( cd "$DOCROOT" && drush -y glacier "$PROJECT_MACHINE_NAME" )
-mkdir -p "$WORKSPACE/all/themes/custom"
-mv "$WORKSPACE/all/themes/external/$PROJECT_MACHINE_NAME" "$WORKSPACE/all/themes/custom"
-( cd "$DOCROOT" && drush -y en "$PROJECT_MACHINE_NAME" )
-( cd "$DOCROOT" && drush -y vset theme_default "$PROJECT_MACHINE_NAME" )
-( cd "$DOCROOT" && drush -y dis bartik )
-# Create the admin sub theme.
-ADMIN_SUB_THEME="${PROJECT_MACHINE_NAME}_admin"
-ADMIN_SUB_THEME_PATH="$WORKSPACE/all/themes/custom/$ADMIN_SUB_THEME"
-cp -R files/ADMIN_SUB_THEME "$WORKSPACE/all/themes/custom"
-mv "$WORKSPACE/all/themes/custom/ADMIN_SUB_THEME" "$ADMIN_SUB_THEME_PATH"
-sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css"
-sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js"
-sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info"
-sed -i -e "s#ADMIN_BASE_THEME#$ADMIN_BASE_THEME#g" "$ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info"
-sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/template.php"
-mv "$ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css" "$ADMIN_SUB_THEME_PATH/css/$ADMIN_SUB_THEME.css"
-mv "$ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js" "$ADMIN_SUB_THEME_PATH/js/$ADMIN_SUB_THEME.js"
-mv "$ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info" "$ADMIN_SUB_THEME_PATH/$ADMIN_SUB_THEME.info"
-( cd "$DOCROOT" && drush -y vset admin_theme "$ADMIN_SUB_THEME" )
+# # Theme configuration.
+# ( cd "$DOCROOT" && drush -y en glacier )
+# ( cd "$DOCROOT" && drush -y vset theme_default glacier )
+# ( cd "$DOCROOT" && drush cc all )
+# ( cd "$DOCROOT" && drush -y glacier "$PROJECT_MACHINE_NAME" )
+# mkdir -p "$WORKSPACE/all/themes/custom"
+# mv "$WORKSPACE/all/themes/external/$PROJECT_MACHINE_NAME" "$WORKSPACE/all/themes/custom"
+# ( cd "$DOCROOT" && drush -y en "$PROJECT_MACHINE_NAME" )
+# ( cd "$DOCROOT" && drush -y vset theme_default "$PROJECT_MACHINE_NAME" )
+# ( cd "$DOCROOT" && drush -y dis bartik )
+# # Create the admin sub theme.
+# ADMIN_SUB_THEME="${PROJECT_MACHINE_NAME}_admin"
+# ADMIN_SUB_THEME_PATH="$WORKSPACE/all/themes/custom/$ADMIN_SUB_THEME"
+# cp -R files/ADMIN_SUB_THEME "$WORKSPACE/all/themes/custom"
+# mv "$WORKSPACE/all/themes/custom/ADMIN_SUB_THEME" "$ADMIN_SUB_THEME_PATH"
+# sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css"
+# sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js"
+# sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info"
+# sed -i -e "s#ADMIN_BASE_THEME#$ADMIN_BASE_THEME#g" "$ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info"
+# sed -i -e "s#ADMIN_SUB_THEME#$ADMIN_SUB_THEME#g" "$ADMIN_SUB_THEME_PATH/template.php"
+# mv "$ADMIN_SUB_THEME_PATH/css/ADMIN_SUB_THEME.css" "$ADMIN_SUB_THEME_PATH/css/$ADMIN_SUB_THEME.css"
+# mv "$ADMIN_SUB_THEME_PATH/js/ADMIN_SUB_THEME.js" "$ADMIN_SUB_THEME_PATH/js/$ADMIN_SUB_THEME.js"
+# mv "$ADMIN_SUB_THEME_PATH/ADMIN_SUB_THEME.info" "$ADMIN_SUB_THEME_PATH/$ADMIN_SUB_THEME.info"
+# ( cd "$DOCROOT" && drush -y vset admin_theme "$ADMIN_SUB_THEME" )
 
 
 
-# Create and enable deployment helper module.
-DEPLOY_MODULE="${PROJECT_MACHINE_NAME}_deploy"
-DEPLOY_MODULE_PATH="$WORKSPACE/all/modules/custom/$DEPLOY_MODULE"
-mkdir -p "$WORKSPACE/all/modules/custom"
-cp -R files/DEPLOY_MODULE "$WORKSPACE/all/modules/custom"
-mv "$WORKSPACE/all/modules/custom/DEPLOY_MODULE" "$DEPLOY_MODULE_PATH"
-sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.info"
-sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.module"
-sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.install"
-mv "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.info" "$DEPLOY_MODULE_PATH/$DEPLOY_MODULE.info"
-mv "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.module" "$DEPLOY_MODULE_PATH/$DEPLOY_MODULE.module"
-mv "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.install" "$DEPLOY_MODULE_PATH/$DEPLOY_MODULE.install"
-# Enabling the module with drush is not possible because of a problem with batch
-# processing in hook_install(). We display a message that asks the user to
-# manually enable the module at the end of the script.
+# # Create and enable deployment helper module.
+# DEPLOY_MODULE="${PROJECT_MACHINE_NAME}_deploy"
+# DEPLOY_MODULE_PATH="$WORKSPACE/all/modules/custom/$DEPLOY_MODULE"
+# mkdir -p "$WORKSPACE/all/modules/custom"
+# cp -R files/DEPLOY_MODULE "$WORKSPACE/all/modules/custom"
+# mv "$WORKSPACE/all/modules/custom/DEPLOY_MODULE" "$DEPLOY_MODULE_PATH"
+# sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.info"
+# sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.module"
+# sed -i -e "s#DEPLOY_MODULE#$DEPLOY_MODULE#g" "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.install"
+# mv "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.info" "$DEPLOY_MODULE_PATH/$DEPLOY_MODULE.info"
+# mv "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.module" "$DEPLOY_MODULE_PATH/$DEPLOY_MODULE.module"
+# mv "$DEPLOY_MODULE_PATH/DEPLOY_MODULE.install" "$DEPLOY_MODULE_PATH/$DEPLOY_MODULE.install"
+# # Enabling the module with drush is not possible because of a problem with batch
+# # processing in hook_install(). We display a message that asks the user to
+# # manually enable the module at the end of the script.
 
 
 
@@ -252,8 +260,8 @@ fi
 
 
 
-# Create a snapshot of the fresh installation.
-./snapshot.sh --file-name=freshinstall
+# # Create a snapshot of the fresh installation.
+# ./snapshot.sh --file-name=freshinstall
 
 
 
