@@ -1,14 +1,14 @@
-default/files
-settings.local.php
+# Ignore configuration files that may contain sensitive information.
+*/settings.local.php
+
+# Ignore paths that contain user-generated content.
+*/files/*
+# Do NOT ignore the config directory.
+!*/files/config_*/
+*/private
+
+# Ignore SimpleTest multi-site environment.
+simpletest
+
+# Ignore npm modules.
 node_modules/
-
-all/libraries
-
-all/translations
-
-all/modules/contrib
-all/modules/external
-all/modules/features/glacier_system
-
-all/themes/contrib
-all/themes/external
