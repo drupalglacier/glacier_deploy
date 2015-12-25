@@ -127,12 +127,14 @@ fi
 
 
 # Create a composer project.
-composer create-project drupal/drupal "$DOCROOT" 8.0.1
-if [ ! -f "$COMPOSER_FILE" ]
-then
-  cp files/composer.json.example "$COMPOSER_FILE"
-fi
-( cd $WORKSPACE && composer update )
+# export COMPOSER_PROCESS_TIMEOUT=1200
+# composer clear-cache
+# composer create-project drupal/drupal "$DOCROOT" 8.0.1
+# if [ ! -f "$COMPOSER_FILE" ]
+# then
+#   cp files/composer.json.example "$COMPOSER_FILE"
+# fi
+# ( cd $WORKSPACE && composer update )
 # INFO: Setup breaks here because of https://www.drupal.org/node/2629772 Drupal 8.0.2 should fix the problem.
 # TODO: download features
 
@@ -159,10 +161,11 @@ fi
 #
 # ( cd $DOCROOT && drush -y make $MAKE_FILE_FEATURES ./ --no-core )
 
-
+mkdir -p "$WORKSPACE/all/profiles"
+( cd "$WORKSPACE/all/profiles" && git clone https://github.com/drupalglacier/glacier_profile.git )
 
 # Install Drupal.
-( cd "$DOCROOT" && drush -y site-install minimal --account-mail="$ACCOUNT_MAIL" --account-name="$ACCOUNT_NAME" --db-url="$DATABASE_DRIVER://$DATABASE_USERNAME:$DATABASE_PASSWORD@$DATABASE_HOST/$DATABASE" --site-name="$PROJECT_HUMAN_READABLE_NAME" )
+( cd "$DOCROOT" && drush -y site-install glacier_profile --account-mail="$ACCOUNT_MAIL" --account-name="$ACCOUNT_NAME" --db-url="$DATABASE_DRIVER://$DATABASE_USERNAME:$DATABASE_PASSWORD@$DATABASE_HOST/$DATABASE" --site-name="$PROJECT_HUMAN_READABLE_NAME" )
 
 
 
