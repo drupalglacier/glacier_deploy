@@ -126,15 +126,14 @@ fi
 
 
 
-# Create a composer project.
-export COMPOSER_PROCESS_TIMEOUT=1200
-composer clear-cache
-composer create-project drupal/drupal "$DOCROOT" 8.0.1
+# Create the new project.
+wget -qO- http://ftp.drupal.org/files/projects/drupal-8.0.1.tar.gz | tar xvzf - -C "$DOCROOT"
+mv "$DOCROOT/drupal-8.0.1/"* "$DOCROOT"
 if [ ! -f "$COMPOSER_FILE" ]
 then
   cp files/composer.json.example "$COMPOSER_FILE"
 fi
-( cd $WORKSPACE && composer update )
+( cd "$WORKSPACE" && composer update )
 # INFO: Setup breaks here because of https://www.drupal.org/node/2629772 Drupal 8.0.2 should fix the problem.
 # TODO: download features
 
