@@ -1,10 +1,11 @@
 # glacier Deploy
-glacier Deploy is a collection of shell scripts to support a `drush make`
+glacier Deploy is a collection of shell scripts to support a `composer`
 based Drupal development workflow.
 
 ## Requirements
 - Bash Shell
 - Webserver (PHP, MySQL,..)
+- [Composer](https://getcomposer.org/)
 - [Drush](https://www.drupal.org/project/drush)
 - [Git](https://git-scm.com/)
 
