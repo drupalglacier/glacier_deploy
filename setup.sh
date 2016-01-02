@@ -257,6 +257,7 @@ rm -f "$WORKSPACE/default/default.settings.php"
 
 
 # Export the configuration.
+rm -Rf "$WORKSPACE/default/files/"config_*
 ( cd "$DOCROOT" && drush -y cex )
 
 
