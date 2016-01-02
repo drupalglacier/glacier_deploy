@@ -165,7 +165,7 @@ mkdir -p "$WORKSPACE/all/profiles"
 ( cd "$WORKSPACE/all/profiles" && git clone https://github.com/drupalglacier/glacier_profile.git )
 
 # Install Drupal.
-( cd "$DOCROOT" && drush -y site-install glacier_profile --account-mail="$ACCOUNT_MAIL" --account-name="$ACCOUNT_NAME" --db-url="$DATABASE_DRIVER://$DATABASE_USERNAME:$DATABASE_PASSWORD@$DATABASE_HOST/$DATABASE" --site-name="$PROJECT_HUMAN_READABLE_NAME" --notify )
+( cd "$DOCROOT" && drush -y site-install glacier_profile --account-mail="$ACCOUNT_MAIL" --account-name="$ACCOUNT_NAME" --db-url="$DATABASE_DRIVER://$DATABASE_USERNAME:$DATABASE_PASSWORD@$DATABASE_HOST/$DATABASE" --site-name="$PROJECT_HUMAN_READABLE_NAME" )
 
 
 
