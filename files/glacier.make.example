@@ -28,9 +28,6 @@ projects[admin_toolbar][version] = "1.11"
 ; projects[block_class][subdir] = "contrib"
 ; projects[block_class][version] = "2.1"
 
-; projects[ctools][subdir] = "contrib"
-; projects[ctools][version] = "1.9"
-
 ; projects[clientside_validation][subdir] = "contrib"
 ; projects[clientside_validation][version] = "1.x-dev"
 
@@ -76,9 +73,6 @@ projects[field_group][version] = "1.0-rc4"
 ; projects[libraries][subdir] = "contrib"
 ; projects[libraries][version] = "2.2"
 
-; projects[magic][subdir] = "contrib"
-; projects[magic][version] = "2.2"
-
 ; projects[media][subdir] = "contrib"
 ; projects[media][version] = "2.x-dev"
 
@@ -94,9 +88,6 @@ projects[metatag][version] = "1.0-beta3"
 ; projects[module_filter][subdir] = "contrib"
 ; projects[module_filter][version] = "2.0"
 
-; projects[multiform][subdir] = "contrib"
-; projects[multiform][version] = "1.1"
-
 projects[paragraphs][subdir] = "contrib"
 projects[paragraphs][version] = "1.0-rc4"
 
@@ -106,23 +97,14 @@ projects[paragraphs][version] = "1.0-rc4"
 ; projects[rabbit_hole][subdir] = "contrib"
 ; projects[rabbit_hole][version] = "2.23"
 
-; projects[search_krumo][subdir] = "contrib"
-; projects[search_krumo][version] = "1.6"
-
 ; projects[select2][subdir] = "contrib"
 ; projects[select2][version] = "1.x-dev"
 
 ; projects[smart_trim][subdir] = "contrib"
 ; projects[smart_trim][version] = "1.x-dev"
 
-; projects[token][subdir] = "contrib"
-; projects[token][version] = "1.6"
-
 ; projects[transliteration][subdir] = "contrib"
 ; projects[transliteration][version] = "3.2"
-
-; projects[variable][subdir] = "contrib"
-; projects[variable][version] = "2.5"
 
 ; projects[views_bulk_operations][subdir] = "contrib"
 ; projects[views_bulk_operations][version] = "3.3"
