@@ -4,6 +4,7 @@ based Drupal development workflow.
 
 ## Requirements
 - Bash Shell
+- Python
 - Webserver (PHP, MySQL,..)
 - [Drush](https://www.drupal.org/project/drush)
 - [Git](https://git-scm.com/)
