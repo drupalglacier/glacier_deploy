@@ -81,24 +81,6 @@ done
 
 
 
-# Setup the basic environment.
-if [ ! -d "$ENVIRONMENT_DIRECTORY" ]
-then
-  mkdir -p "$ENVIRONMENT_DIRECTORY"
-fi
-
-if [ ! -f "$ENVIRONMENT_DIRECTORY/config.cfg" ]
-then
-  cp files/config.cfg.example "$ENVIRONMENT_DIRECTORY/config.cfg"
-
-  # Replace project machine name placeholder string.
-  sed -i -e "s#PROJECT_MACHINE_NAME_PLACEHOLDER#$PROJECT_MACHINE_NAME#g" "$ENVIRONMENT_DIRECTORY/config.cfg"
-  source "$ENVIRONMENT_DIRECTORY/config.cfg"
-  ENVIRONMENT_DIRECTORY_RELATIVE=$(python -c "import os.path; print os.path.relpath('${ENVIRONMENT_DIRECTORY}', '${DOCROOT}')")
-fi
-
-
-
 # Check if all required variables, that don't have a default value, are set.
 if [ -z "$ACCOUNT_MAIL" ]
 then

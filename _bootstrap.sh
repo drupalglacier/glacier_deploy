@@ -29,4 +29,7 @@ if [ -f "$ENVIRONMENT_DIRECTORY/config.cfg" ]
 then
   source "$ENVIRONMENT_DIRECTORY/config.cfg"
   ENVIRONMENT_DIRECTORY_RELATIVE=$(python -c "import os.path; print os.path.relpath('${ENVIRONMENT_DIRECTORY}', '${DOCROOT}')")
+else
+  printf "${RED}No config.cfg file found${NC}\n"
+  exit 3
 fi
