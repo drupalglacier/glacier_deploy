@@ -42,14 +42,6 @@ the `glacier_deploy` and `environment` directory are on the same level.
 Furthermore it is highly recommended that both the `glacier_deploy` and the
 `environment` directory are not accessible from the web.
 
-By default the `setup.sh` script copies the example configuration files
-(`config.cfg.example` and `settings.local.php.example`) to your `environment`
-directory and uses those for the setup process. But usually you want to make
-changes to the `config.cfg` file to meet the conditions of your development
-environment. To do so, manually copy the file from `glacier_deploy/files` to
-your `environment` directory (remove the `.example` ending) and change the
-settings to fulfill your needs.
-
 ```
 .
 ├── docroot
@@ -93,8 +85,6 @@ Using the setup script it is possible to create a Drupal installation based on
 your own or the predefined `.make` script in a few minutes. To perform an
 installation using the predefined default settings, it is sufficient to execute
 the setup script and pass the database login informations as parameters.
-Before starting the setup script you must check whether the data in the
-`config.cfg.example` file are compatible with your development environment.
 
 Once everything is configured correctly, you can start the setup by running:
 `./setup.sh --project-machine-name=project --project-human-readable-name=Project --account-mail=mail@mail.com --account-name=admin --database=database --database-username=username --database-password=password --database-host=127.0.0.1`
