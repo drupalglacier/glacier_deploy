@@ -35,8 +35,11 @@ fi
 
 
 
-# Build the make file.
-( cd $DOCROOT && drush -y make $MAKE_FILE ./ )
+# Build the make file if last change date is newer than last build.
+if [ $(date +%s -r "$MAKE_FILE") -gt $(tail -n 1 "$ENVIRONMENT/build_history.txt") ]
+then
+  ( cd $DOCROOT && drush -y make $MAKE_FILE ./ )
+fi
 
 
 
@@ -52,3 +55,12 @@ fi
 
 # Disable the site maintenance mode.
 ( cd $DOCROOT && drush -y vset maintenance_mode 0 )
+
+
+
+# Write history.
+if [ ! -f "$ENVIRONMENT/build_history.txt" ]
+then
+  touch "$ENVIRONMENT/build_history.txt"
+fi
+echo $(date +%s) >> "$ENVIRONMENT/build_history.txt"
