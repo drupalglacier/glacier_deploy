@@ -109,9 +109,9 @@ fi
 
 
 # Create the new project.
-wget -qO- http://ftp.drupal.org/files/projects/drupal-8.0.1.tar.gz | tar xvzf - -C "$DOCROOT"
-( cd "$DOCROOT/drupal-8.0.1/" && mv * .[^.]* "$DOCROOT" )
-rm -R "$DOCROOT/drupal-8.0.1/"
+wget -qO- http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz | tar xvzf - -C "$DOCROOT"
+( cd "$DOCROOT/drupal-8.0.5/" && mv * .[^.]* "$DOCROOT" )
+rm -R "$DOCROOT/drupal-8.0.5/"
 if [ ! -f "$COMPOSER_FILE" ]
 then
   cp files/composer.json.example "$COMPOSER_FILE"
