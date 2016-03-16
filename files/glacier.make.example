@@ -5,7 +5,6 @@ api = 2
 projects[drupal][version] = "7.43"
 
 ; Performance patches (according to https://groups.drupal.org/node/210683).
-projects[drupal][patch][] = "https://www.drupal.org/files/issues/drupal-1443308-49-module_load_include-static-cache.patch"
 projects[drupal][patch][] = "https://www.drupal.org/files/issues/D7_improve_theme_registry-2339447-65.patch"
 projects[drupal][patch][] = "https://www.drupal.org/files/drupal-1443342-1-inline-file_uri_scheme-in-file_stream_wrapper_uri_normalize.patch"
 projects[drupal][patch][] = "https://www.drupal.org/files/drupal-1081266-102-drupal_get_filename-D7.patch"
