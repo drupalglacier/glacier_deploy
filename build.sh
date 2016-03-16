@@ -35,8 +35,16 @@ fi
 
 
 
+# Create the build_history.txt file if it doesn't exist already.
+if [ ! -f "$ENVIRONMENT_DIRECTORY/build_history.txt" ]
+then
+  touch "$ENVIRONMENT_DIRECTORY/build_history.txt"
+fi
+
+
+
 # Build the make file if last change date is newer than last build.
-if [ $(date +%s -r "$MAKE_FILE") -gt $(tail -n 1 "$ENVIRONMENT/build_history.txt") ]
+if [ $(date +%s -r "$MAKE_FILE") -gt $(tail -n 1 "$ENVIRONMENT_DIRECTORY/build_history.txt") ]
 then
   ( cd "$DOCROOT" && drush -y make "$MAKE_FILE" ./ )
 fi
@@ -59,8 +67,4 @@ fi
 
 
 # Write history.
-if [ ! -f "$ENVIRONMENT/build_history.txt" ]
-then
-  touch "$ENVIRONMENT/build_history.txt"
-fi
-echo $(date +%s) >> "$ENVIRONMENT/build_history.txt"
+echo $(date +%s) >> "$ENVIRONMENT_DIRECTORY/build_history.txt"
