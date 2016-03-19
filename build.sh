@@ -44,7 +44,7 @@ fi
 
 
 # Build the make file if last change date is newer than last build.
-if [ $(date +%s -r "$MAKE_FILE") -gt $(tail -n 1 "$ENVIRONMENT_DIRECTORY/build_history.txt") ]
+if [[ $(date +%s -r "$MAKE_FILE") -gt $(tail -n 1 "$ENVIRONMENT_DIRECTORY/build_history.txt") ]]
 then
   ( cd "$DOCROOT" && drush -y make "$MAKE_FILE" ./ )
 fi
