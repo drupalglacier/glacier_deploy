@@ -228,8 +228,7 @@ fi
 ( cd "$WORKSPACE" && git commit -m "initial commit" )
 ( cd "$WORKSPACE" && git branch staging )
 ( cd "$WORKSPACE" && git branch production )
-( cd "$WORKSPACE" && git checkout -b dev )
-( cd "$WORKSPACE" && git branch -d master )
+( cd "$WORKSPACE" && git checkout master )
 ( cd "$WORKSPACE" && git remote add origin "$REPOSITORY" )
 
 
