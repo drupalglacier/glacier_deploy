@@ -16,7 +16,6 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'admin_menu';
   $modules[] = 'admin_menu_toolbar';
   $modules[] = 'locale_auto_import';
-  $modules[] = 'module_filter';
 
   // Advanced CSS/JS Aggregation.
   $modules[] = 'advagg';
@@ -40,10 +39,8 @@ function DEPLOY_MODULE_install() {
 
   // Core.
   $modules[] = 'block';
-  $modules[] = 'dblog';
   $modules[] = 'field';
   $modules[] = 'field_sql_storage';
-  $modules[] = 'field_ui';
   $modules[] = 'file';
   $modules[] = 'filter';
   $modules[] = 'image';
@@ -59,21 +56,15 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'taxonomy';
   $modules[] = 'text';
   $modules[] = 'translation';
-  $modules[] = 'update';
   $modules[] = 'user';
 
   // Date/Time.
   $modules[] = 'date';
   $modules[] = 'date_api';
 
-  // Development.
-  $modules[] = 'devel';
-  $modules[] = 'search_krumo';
-
   // Display Suite.
   $modules[] = 'ds';
   $modules[] = 'ds_forms';
-  $modules[] = 'ds_ui';
 
   // Features.
   $modules[] = 'features';
@@ -180,7 +171,6 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'views';
   $modules[] = 'views_bulk_operations';
   $modules[] = 'views_tree';
-  $modules[] = 'views_ui';
 
   // XML sitemap.
   $modules[] = 'xmlsitemap';
@@ -424,22 +414,25 @@ function DEPLOY_MODULE_install() {
   batch_process();
 }
 
-/**
- * Disable modules only needed for development on non dev environments.
- */
-function DEPLOY_MODULE_update_7000(&$sandbox) {
-  if (variable_get('environment', 'dev') != 'dev') {
-    $modules = array();
-    $modules[] = 'module_filter';
-    $modules[] = 'dblog';
-    $modules[] = 'field_ui';
-    $modules[] = 'update';
-    $modules[] = 'devel';
-    $modules[] = 'search_krumo';
-    $modules[] = 'ds_ui';
-    $modules[] = 'views_ui';
+// /**
+//  * Enable modules only needed for development on dev environments.
+//  */
+// function DEPLOY_MODULE_update_7000(&$sandbox) {
+//   if (variable_get('environment', 'dev') == 'dev') {
+//     module_enable(array(
+//       'module_filter',
+//       'dblog',
+//       'field_ui',
+//       'update',
+//       'devel',
+//       'search_krumo',
+//       'stage_file_proxy',
+//       'ds_ui',
+//       'views_ui',
+//     ));
 
-    module_disable($modules);
-    drupal_uninstall_modules($modules);
-  }
-}
+//     // Configure the stage file proxy module to
+//     // hotlink images from the live environemnt.
+//     variable_set('stage_file_proxy_hotlink', TRUE);
+//   }
+// }

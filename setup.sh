@@ -240,3 +240,5 @@ fi
 
 printf "${GREEN}Setup was successful!${NC}\n"
 printf "${YELLOW}Please go to /admin/modules and manually enable $DEPLOY_MODULE ${RED}(do not use drush!)${NC}\n"
+printf "After the initial setup and configuration, upload your files and the database to your staging system. From now on every change you make must be tracked by Git.\n"
+printf "In the $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.install file uncomment the $DEPLOY_MODULE_update_7000 function and run drush updb to enable development modules ${YELLOW}(do this AFTER you uploaded the database to your staging system otherwise development modules will be enabled in the staging and live environments!)${NC}.\n"
