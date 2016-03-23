@@ -51,6 +51,15 @@ fi
 
 
 
+# Copy (mostly) environment specific files, that might be overwritten by the
+# build process, to the docroot directory. Most notably .htaccess and robots.txt
+if [ -d "$ENVIRONMENT_DIRECTORY/docroot" ]
+then
+  yes | cp -R "$ENVIRONMENT_DIRECTORY/docroot/." "$DOCROOT"
+fi
+
+
+
 # Apply any database updates required (as with running update.php).
 ( cd "$DOCROOT" && drush -y updb )
 

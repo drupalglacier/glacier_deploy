@@ -114,6 +114,25 @@ creates a snapshot of the current state (you can prevent this by adding the
 environment), builds the Makefile, updates the database (`drush updatedb`) and
 reverts all features (`drush features-revert-all`).
 
+### Environment specific files
+Files like `.htaccess` and `robots.txt` are not tracked by version control and
+might be overwritten by running the `build.sh` script. Furthermore those files
+are in most cases environment specific. To enable you to provide custom versions
+of those files the `build.sh` script will look inside your environment directory
+for a directory named `docroot` and copy every file in it to your actual docroot
+directory.
+
+```
+.
+├── docroot
+├── environment
+|   ├── config.cfg
+|   └── docroot
+|       ├── .htaccess
+|       └── robots.txt
+└── glacier_deploy
+```
+
 ### deploy_ftp.sh
 If it is not possible to use Git for deployment (e.g. on cheap shared hosting),
 you can use the `deploy_ftp.sh` script to deploy via a FTP connection. The
