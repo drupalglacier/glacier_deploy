@@ -16,8 +16,8 @@ projects[drupal][version] = "8.0.1"
 projects[admin_toolbar][subdir] = "contrib"
 projects[admin_toolbar][version] = "1.11"
 
-; projects[advagg][subdir] = "contrib"
-; projects[advagg][version] = "2.16"
+projects[advagg][subdir] = "contrib"
+projects[advagg][version] = "2.16"
 
 ; projects[better_exposed_filters][subdir] = "contrib"
 ; projects[better_exposed_filters][version] = "3.2"
@@ -28,8 +28,8 @@ projects[admin_toolbar][version] = "1.11"
 ; projects[block_class][subdir] = "contrib"
 ; projects[block_class][version] = "2.1"
 
-; projects[clientside_validation][subdir] = "contrib"
-; projects[clientside_validation][version] = "1.x-dev"
+projects[clientside_validation][subdir] = "contrib"
+projects[clientside_validation][version] = "1.x-dev"
 
 ; projects[colorbox][subdir] = "contrib"
 ; projects[colorbox][version] = "2.10"

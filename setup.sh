@@ -109,12 +109,15 @@ fi
 
 
 # Create the new project.
-wget -qO- http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz | tar xvzf - -C "$DOCROOT"
-( cd "$DOCROOT/drupal-8.0.5/" && mv * .[^.]* "$DOCROOT" )
-rm -R "$DOCROOT/drupal-8.0.5/"
+# wget -qO- http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz | tar xvzf - -C "$DOCROOT"
+# ( cd "$DOCROOT/drupal-8.0.5/" && mv * .[^.]* "$DOCROOT" )
+# rm -R "$DOCROOT/drupal-8.0.5/"
+( cd "$DOCROOT" && yes | composer create-project drupal/drupal _TEMP 8.0.5 )
+( cd "$DOCROOT/_TEMP" && yes | mv * .[^.]* "$DOCROOT" )
+rm -R "$DOCROOT/_TEMP"
 if [ ! -f "$COMPOSER_FILE" ]
 then
-  cp files/composer.json.example "$COMPOSER_FILE"
+  yes | cp files/composer.json.example "$COMPOSER_FILE"
 fi
 ( cd "$WORKSPACE" && composer update )
 # INFO: Setup breaks here because of https://www.drupal.org/node/2629772 Drupal 8.0.2 should fix the problem.
