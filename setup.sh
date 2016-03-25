@@ -130,6 +130,13 @@ fi
 
 ( cd "$DOCROOT" && drush -y make "$MAKE_FILE_FEATURES" ./ --no-core )
 
+if [ ! -f "$MAKE_FILE_ENVIRONMENT" ]
+then
+  cp "files/glacier.$ENVIRONMENT.make.example" "$MAKE_FILE_ENVIRONMENT"
+fi
+
+( cd "$DOCROOT" && drush -y make "$MAKE_FILE_ENVIRONMENT" ./ --no-core )
+
 
 
 # Install Drupal.
