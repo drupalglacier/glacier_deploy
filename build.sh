@@ -30,25 +30,56 @@ fi
 # Enable the site maintenance mode (in none dev environments).
 if [ "$ENVIRONMENT" != "dev" ]
 then
-  ( cd $DOCROOT && drush -y vset maintenance_mode 1 )
+  ( cd "$DOCROOT" && drush -y vset maintenance_mode 1 )
 fi
 
 
 
-# Build the make file.
-( cd $DOCROOT && drush -y make $MAKE_FILE ./ )
+# Create the build_history.txt file if it doesn't exist already.
+if [ ! -f "$ENVIRONMENT_DIRECTORY/build_history.txt" ]
+then
+  touch "$ENVIRONMENT_DIRECTORY/build_history.txt"
+fi
+
+
+
+# Build the make file(s) if last change date is newer than last build.
+if [[ $(date +%s -r "$MAKE_FILE") -gt $(tail -n 1 "$ENVIRONMENT_DIRECTORY/build_history.txt") ]]
+then
+  ( cd "$DOCROOT" && drush -y make "$MAKE_FILE" ./ )
+fi
+
+if [ -f "$MAKE_FILE_ENVIRONMENT" ]
+  if [[ $(date +%s -r "$MAKE_FILE_ENVIRONMENT") -gt $(tail -n 1 "$ENVIRONMENT_DIRECTORY/build_history.txt") ]]
+    ( cd "$DOCROOT" && drush -y make "$MAKE_FILE_ENVIRONMENT" ./ --no-core )
+  fi
+fi
+
+
+
+# Copy (mostly) environment specific files, that might be overwritten by the
+# build process, to the docroot directory. Most notably .htaccess and robots.txt
+if [ -d "$ENVIRONMENT_DIRECTORY/docroot" ]
+then
+  yes | cp -R "$ENVIRONMENT_DIRECTORY/docroot/." "$DOCROOT"
+fi
 
 
 
 # Apply any database updates required (as with running update.php).
-( cd $DOCROOT && drush -y updb )
+( cd "$DOCROOT" && drush -y updb )
 
 
 
 # Revert all enabled feature modules on your site.
-( cd $DOCROOT && drush -y fra )
+( cd "$DOCROOT" && drush -y fra )
 
 
 
 # Disable the site maintenance mode.
-( cd $DOCROOT && drush -y vset maintenance_mode 0 )
+( cd "$DOCROOT" && drush -y vset maintenance_mode 0 )
+
+
+
+# Write history.
+echo $(date +%s) >> "$ENVIRONMENT_DIRECTORY/build_history.txt"

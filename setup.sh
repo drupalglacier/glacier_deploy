@@ -256,8 +256,7 @@ fi
 ( cd "$WORKSPACE" && git commit -m "initial commit" )
 ( cd "$WORKSPACE" && git branch staging )
 ( cd "$WORKSPACE" && git branch production )
-( cd "$WORKSPACE" && git checkout -b dev )
-( cd "$WORKSPACE" && git branch -d master )
+( cd "$WORKSPACE" && git checkout master )
 ( cd "$WORKSPACE" && git remote add origin "$REPOSITORY" )
 
 
@@ -268,3 +267,5 @@ fi
 
 
 printf "${GREEN}Setup was successful!${NC}\n"
+printf "${YELLOW}After the initial setup and configuration, upload your files and the database to your staging system. From now on every change you make must be tracked by Git.\n"
+# printf "In the $DEPLOY_MODULE_PATH/$DEPLOY_MODULE.install file uncomment the $DEPLOY_MODULE_update_7000 function and run drush updb to enable development modules ${YELLOW}(do this AFTER you uploaded the database to your staging system otherwise development modules will be enabled in the staging and live environments!)${NC}.\n"

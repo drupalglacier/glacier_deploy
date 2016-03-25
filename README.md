@@ -59,23 +59,27 @@ to let the `setup.sh` script create the file and make changes to it after the
 installation is complete.
 
 ### Makefiles
-There are two Makefiles which are used to build the Drupal base system.
+There are three Makefiles which are used to build the Drupal base system.
 Usually it is fine to use the default files. The `setup.sh` script will create
-a copy of the example Makefiles (`glacier.make.example` and
-`glacier.features.make.example`) in your `sites` directory and install the
-Drupal base system accordingly. You will use the default Makefile `glacier.make`
-to install new modules, themes, libraries and patches during your project
-workflow. The `build.sh` script will use this Makefile to implement your changes
-across your environments. The features Makefile `glacier.features.make` will
-only be used during the setup process. This is because it is expected, that you
-make changes to your features and those changes are tracked via Git. Defining
-your features in the default Makefile would result in overwriting them when
-running `build.sh`. If you do not make changes to certain features and you want
-to update them from a global repository, you should add those to the default
-Makefile and add them to `.gitignore`. If you want to make changes to the
-Makefiles before the initial setup, create a copy of the example Makefiles in
-`glacier_deploy/files` (remove the `.example` ending) and move them to a new
-directory `sites` in the docroot of your project.
+a copy of the example Makefiles (`glacier.make.example`,
+`glacier.features.make.example` and `glacier.dev.example`) in your `sites`
+directory and install the Drupal base system accordingly. You will use the
+default Makefile `glacier.make` to install new modules, themes, libraries and
+patches during your project workflow. The `build.sh` script will use this
+Makefile to implement your changes across your environments. The features
+Makefile `glacier.features.make` will only be used during the setup process.
+This is because it is expected, that you make changes to your features and those
+changes are tracked via Git. Defining your features in the default Makefile
+would result in overwriting them when running `build.sh`. If you do not make
+changes to certain features and you want to update them from a global
+repository, you should add those to the default Makefile and also add them to
+`.gitignore`. The `glacier.dev.make` file is only built in the dev environment.
+You can use this and other environment specific Makefiles (like
+`glacier.staging.make`) to only download certain things to the specified
+environment. If you want to make changes to the Makefiles before the initial
+setup, create a copy of the example Makefiles in `glacier_deploy/files` (remove
+the `.example` ending) and move them to a new directory `sites` in the docroot
+of your project.
 
 ## Scripts
 Open the terminal (your shell prompt) and type the command e.g. `./snapshot.sh`.
@@ -114,6 +118,25 @@ creates a snapshot of the current state (you can prevent this by adding the
 `-no-snapshot` option), puts your site in maintenance mode (except on the dev
 environment), builds the Makefile, updates the database (`drush updatedb`) and
 reverts all features (`drush features-revert-all`).
+
+### Environment specific files
+Files like `.htaccess` and `robots.txt` are not tracked by version control and
+might be overwritten by running the `build.sh` script. Furthermore those files
+are in most cases environment specific. To enable you to provide custom versions
+of those files the `build.sh` script will look inside your environment directory
+for a directory named `docroot` and copy every file in it to your actual docroot
+directory.
+
+```
+.
+├── docroot
+├── environment
+|   ├── config.cfg
+|   └── docroot
+|       ├── .htaccess
+|       └── robots.txt
+└── glacier_deploy
+```
 
 ### deploy_ftp.sh
 If it is not possible to use Git for deployment (e.g. on cheap shared hosting),

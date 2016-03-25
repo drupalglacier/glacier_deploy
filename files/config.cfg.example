@@ -10,6 +10,7 @@ WORKSPACE="$DOCROOT/sites"
 WORKSPACE_DEFAULT="$WORKSPACE/default"
 COMPOSER_FILE="$WORKSPACE/composer.json"
 MAKE_FILE_FEATURES="$WORKSPACE/glacier.features.make" # TODO: find replacement
+MAKE_FILE_ENVIRONMENT="$WORKSPACE/glacier.$ENVIRONMENT.make" # TODO: find replacement
 BACKUP_DIRECTORY="$ENVIRONMENT_DIRECTORY/backup"
 
 # FTP data.

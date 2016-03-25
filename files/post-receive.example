@@ -24,9 +24,9 @@ do
     chmod 755 "$STAGING_WORKSPACE/default"
     chmod 644 "$STAGING_WORKSPACE/default/settings.php"
     ( cd "$STAGING_WORKSPACE" && git pull origin staging )
+    ( cd "$STAGING_GLACIER_DEPLOY_DIRECTORY" && ./build.sh -no-snapshot )
     chmod 555 "$STAGING_WORKSPACE/default"
     chmod 444 "$STAGING_WORKSPACE/default/settings.php"
-    ( cd "$STAGING_GLACIER_DEPLOY_DIRECTORY" && ./build.sh -no-snapshot )
   fi
 
   if [ "$BRANCH" == "production" ]
@@ -35,8 +35,8 @@ do
     chmod 755 "$PRODUCTION_WORKSPACE/default"
     chmod 644 "$PRODUCTION_WORKSPACE/default/settings.php"
     ( cd "$PRODUCTION_WORKSPACE" && git pull origin production )
+    ( cd "$PRODUCTION_GLACIER_DEPLOY_DIRECTORY" && ./build.sh -no-snapshot )
     chmod 555 "$PRODUCTION_WORKSPACE/default"
     chmod 444 "$PRODUCTION_WORKSPACE/default/settings.php"
-    ( cd "$PRODUCTION_GLACIER_DEPLOY_DIRECTORY" && ./build.sh -no-snapshot )
   fi
 done
