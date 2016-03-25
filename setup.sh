@@ -128,7 +128,7 @@ then
   cp files/glacier.features.make.example "$MAKE_FILE_FEATURES"
 fi
 
-( cd $DOCROOT && drush -y make $MAKE_FILE_FEATURES ./ --no-core )
+( cd "$DOCROOT" && drush -y make "$MAKE_FILE_FEATURES" ./ --no-core )
 
 
 
