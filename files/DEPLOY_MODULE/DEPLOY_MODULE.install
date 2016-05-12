@@ -154,6 +154,7 @@ function DEPLOY_MODULE_install() {
   // User interface.
   $modules[] = 'jquery_update';
   $modules[] = 'select2';
+  $modules[] = 'simplify';
 
   // Variable.
   $modules[] = 'variable';
@@ -361,6 +362,12 @@ function DEPLOY_MODULE_install() {
   variable_set('select2_min_options_count_for_search', 2);
   variable_set('select2_use_for_all_select_elements', TRUE);
   variable_set('select2_use_for_all_select_elements_for_admin_pages', TRUE);
+
+  // Simplify.
+  variable_set('simplify_nodes_global', array(
+    'author',
+    'revision',
+  ));
 
   // Title.
   variable_set('title_bean', array(
