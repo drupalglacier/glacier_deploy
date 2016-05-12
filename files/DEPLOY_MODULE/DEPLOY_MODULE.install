@@ -415,14 +415,14 @@ function DEPLOY_MODULE_install() {
 // function DEPLOY_MODULE_update_7000(&$sandbox) {
 //   if (variable_get('environment', 'dev') == 'dev') {
 //     module_enable(array(
-//       'module_filter',
 //       'dblog',
-//       'field_ui',
-//       'update',
 //       'devel',
+//       'ds_ui',
+//       'field_ui',
+//       'module_filter',
 //       'search_krumo',
 //       'stage_file_proxy',
-//       'ds_ui',
+//       'update',
 //       'views_ui',
 //     ));
 
