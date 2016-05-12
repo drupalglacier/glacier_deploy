@@ -99,6 +99,9 @@ projects[formatter_field][version] = "1.x-dev"
 projects[formatter_field_preset][subdir] = "contrib"
 projects[formatter_field_preset][version] = "1.x-dev"
 
+projects[fpa][subdir] = "contrib"
+projects[fpa][version] = "2.6"
+
 projects[globalredirect][subdir] = "contrib"
 projects[globalredirect][version] = "1.5"
 

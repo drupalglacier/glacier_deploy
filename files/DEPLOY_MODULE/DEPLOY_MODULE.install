@@ -15,6 +15,7 @@ function DEPLOY_MODULE_install() {
   // Administration.
   $modules[] = 'admin_menu';
   $modules[] = 'admin_menu_toolbar';
+  $modules[] = 'fpa';
   $modules[] = 'locale_auto_import';
 
   // Advanced CSS/JS Aggregation.
