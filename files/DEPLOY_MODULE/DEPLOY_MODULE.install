@@ -32,11 +32,6 @@ function DEPLOY_MODULE_install() {
   // Chaos tool suite.
   $modules[] = 'ctools';
 
-  // Clientside Validation.
-  $modules[] = 'clientside_validation';
-  $modules[] = 'clientside_validation_form';
-  $modules[] = 'clientside_validation_ife';
-
   // Core.
   $modules[] = 'block';
   $modules[] = 'field';
@@ -156,7 +151,6 @@ function DEPLOY_MODULE_install() {
   $modules[] = 'uuid_path';
 
   // User interface.
-  $modules[] = 'ife';
   $modules[] = 'jquery_update';
   $modules[] = 'select2';
 
