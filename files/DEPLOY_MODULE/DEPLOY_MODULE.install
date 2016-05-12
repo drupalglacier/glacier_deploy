@@ -419,12 +419,19 @@ function DEPLOY_MODULE_install() {
 //       'devel',
 //       'ds_ui',
 //       'field_ui',
+//       'mail_safety',
 //       'module_filter',
 //       'search_krumo',
 //       'stage_file_proxy',
 //       'update',
 //       'views_ui',
 //     ));
+
+//     // Configure the mail safety module to catch all outgoing emails and
+//     // redirect the to the mail safety dashboard.
+//     variable_set('mail_safety_enabled', TRUE);
+//     variable_set('mail_safety_send_mail_to_dashboard', TRUE)
+//     variable_set('mail_safety_send_mail_to_default_mail', FALSE)
 
 //     // Configure the stage file proxy module to
 //     // hotlink images from the live environemnt.

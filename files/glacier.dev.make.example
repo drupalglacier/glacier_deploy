@@ -4,6 +4,9 @@ api = 2
 projects[devel][subdir] = "contrib"
 projects[devel][version] = "1.5"
 
+projects[mail_safety][subdir] = "contrib"
+projects[mail_safety][version] = "1.0"
+
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "2.0"
 
