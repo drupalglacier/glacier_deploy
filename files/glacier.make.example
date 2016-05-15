@@ -156,6 +156,9 @@ projects[rabbit_hole][version] = "2.23"
 projects[select2][subdir] = "contrib"
 projects[select2][version] = "1.0"
 
+projects[semanticviews][subdir] = "contrib"
+projects[semanticviews][version] = "1.0-rc2"
+
 projects[simplify][subdir] = "contrib"
 projects[simplify][version] = "3.3"
 

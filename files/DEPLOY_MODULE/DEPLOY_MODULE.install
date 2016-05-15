@@ -164,6 +164,7 @@ function DEPLOY_MODULE_install() {
   // Views.
   $modules[] = 'better_exposed_filters';
   $modules[] = 'draggableviews';
+  $modules[] = 'semanticviews';
   $modules[] = 'views';
   $modules[] = 'views_bulk_operations';
   $modules[] = 'views_tree';
