@@ -18,6 +18,6 @@ $drupal_hash_salt = 'RANDOM_STRING_PLACEHOLDER';
 
 $conf['environment'] = 'ENVIRONMENT_PLACEHOLDER';
 
-if ($conf['environment'] == 'dev') {
+if ($conf['environment'] == 'dev' || isset($_GET['theme-debug'])) {
   $conf['theme_debug'] = TRUE;
 }
