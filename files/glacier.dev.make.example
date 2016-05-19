@@ -1,6 +1,9 @@
 core = 7.x
 api = 2
 
+projects[coffee][subdir] = "contrib"
+projects[coffee][version] = "2.2"
+
 projects[devel][subdir] = "contrib"
 projects[devel][version] = "1.5"
 

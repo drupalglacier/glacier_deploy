@@ -423,6 +423,7 @@ function DEPLOY_MODULE_install() {
 // function DEPLOY_MODULE_update_7000(&$sandbox) {
 //   if (variable_get('environment', 'dev') == 'dev') {
 //     module_enable(array(
+//       'coffee',
 //       'dblog',
 //       'devel',
 //       'ds_ui',
