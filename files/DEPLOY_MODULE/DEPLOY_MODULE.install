@@ -64,6 +64,7 @@ function DEPLOY_MODULE_install() {
 
   // Features.
   $modules[] = 'features';
+  $modules[] = 'fe_block';
   $modules[] = 'uuid_features';
 
   // Fields.
