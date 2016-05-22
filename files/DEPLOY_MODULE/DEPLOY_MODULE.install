@@ -440,8 +440,8 @@ function DEPLOY_MODULE_install() {
 //     // Configure the mail safety module to catch all outgoing emails and
 //     // redirect the to the mail safety dashboard.
 //     variable_set('mail_safety_enabled', TRUE);
-//     variable_set('mail_safety_send_mail_to_dashboard', TRUE)
-//     variable_set('mail_safety_send_mail_to_default_mail', FALSE)
+//     variable_set('mail_safety_send_mail_to_dashboard', TRUE);
+//     variable_set('mail_safety_send_mail_to_default_mail', FALSE);
 
 //     // Configure the stage file proxy module to
 //     // hotlink images from the live environemnt.
