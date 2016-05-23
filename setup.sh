@@ -129,6 +129,7 @@ then
 fi
 
 ( cd "$DOCROOT" && drush -y make "$MAKE_FILE_FEATURES" ./ --no-core )
+rm -f "$MAKE_FILE_FEATURES"
 
 if [ ! -f "$MAKE_FILE_ENVIRONMENT" ]
 then
