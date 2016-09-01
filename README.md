@@ -1,4 +1,4 @@
-# glacier Deploy
+# glacier Deploy  (DEPRECATED!)
 glacier Deploy is a collection of shell scripts to support a `drush make`
 based Drupal development workflow.
 
